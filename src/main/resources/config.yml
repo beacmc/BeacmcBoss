@@ -1,0 +1,18 @@
+settings:
+
+  # use in languages files
+  prefix: ""
+
+  # used in TIMER trigger
+  #
+  # 1 second = 20 ticks
+  timer-time: 15
+
+  # used in NEARBY_PLAYERS trigger
+  nearby-radius: 10
+
+# directory: bosses
+bosses:
+
+  # boss_name: file.yml
+  example: example.yml
