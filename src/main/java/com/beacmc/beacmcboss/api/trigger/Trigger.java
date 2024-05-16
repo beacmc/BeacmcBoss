@@ -1,6 +1,5 @@
 package com.beacmc.beacmcboss.api.trigger;
 
-import com.beacmc.beacmcboss.api.requirement.Requirement;
 import com.beacmc.beacmcboss.boss.Boss;
 import org.bukkit.entity.Player;
 

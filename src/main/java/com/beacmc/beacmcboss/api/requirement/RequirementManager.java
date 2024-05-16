@@ -18,8 +18,8 @@ public class RequirementManager {
         registerRequirements = new HashSet<>();
     }
 
-    public void registerAction(Requirement requirement) {
-        if(isRegisterAction(requirement)) {
+    public void registerRequirement(Requirement requirement) {
+        if(isRegisterRequirement(requirement)) {
             plugin.getLogger().severe("requirement " + requirement.getName() + " already registered");
             return;
         }
@@ -27,9 +27,9 @@ public class RequirementManager {
         registerRequirements.add(requirement);
     }
 
-    public void registerActions(Requirement... requirements) {
+    public void registerRequirements(Requirement... requirements) {
         for(Requirement requirement : requirements) {
-            if (isRegisterAction(requirement)) {
+            if (isRegisterRequirement(requirement)) {
                 plugin.getLogger().severe("requirement " + requirement.getName() + " already registered");
                 continue;
             }
@@ -38,8 +38,8 @@ public class RequirementManager {
         }
     }
 
-    public void unregisterAction(Requirement requirement) {
-        if(!isRegisterAction(requirement)) {
+    public void unregisterRequirement(Requirement requirement) {
+        if(!isRegisterRequirement(requirement)) {
             plugin.getLogger().severe("requirement " + requirement.getName() + " not registered");
             return;
         }
@@ -47,7 +47,7 @@ public class RequirementManager {
         registerRequirements.remove(requirement);
     }
 
-    public boolean isRegisterAction(Requirement requirement) {
+    public boolean isRegisterRequirement(Requirement requirement) {
         String name = requirement.getName();
         for (Requirement execute : registerRequirements) {
             if(name.equals(execute.getName()))
