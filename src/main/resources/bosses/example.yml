@@ -9,4 +9,10 @@ boss:
     yaw: 0.0
     pitch: 0.0
   health: 100.0
+triggers:
+  spawn:
+    type: BOSS_SPAWN
+    requirements: []
+    actions:
+      - '[broadcast] Boss {boss-name} appeared on {boss-loc-world}: {boss-loc-x} {boss-loc-y} {boss-loc-z}'
   
