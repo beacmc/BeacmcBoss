@@ -1,5 +1,6 @@
 boss:
   display-name: "#ffbb00&lExample Boss"
+  entity-type: ZOMBIE
   spawn-location:
     ==: org.bukkit.Location
     world: world
