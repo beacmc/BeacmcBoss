@@ -13,7 +13,7 @@ public class Color {
             Pattern.CASE_INSENSITIVE
     );
 
-    public static String compile(String text) {
+    public static String of(String text) {
         if(text == null || text.isEmpty()) {
             return "";
         }
