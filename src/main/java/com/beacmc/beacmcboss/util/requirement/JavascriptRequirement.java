@@ -11,12 +11,12 @@ import java.util.regex.Pattern;
 public class JavascriptRequirement extends Requirement {
     @Override
     public String getName() {
-        return "[javascript]";
+        return "[condition]";
     }
 
     @Override
     public String getDescription() {
-        return "copy of checks from JS";
+        return "copy of checks from JavaScript";
     }
 
     @Override
