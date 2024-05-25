@@ -20,6 +20,6 @@ public class ActionbarAction extends Action {
 
     @Override
     public void execute(Player player, Boss boss, String param) {
-        player.sendActionBar(PlaceholderAPI.setPlaceholders(player, Color.of(param)));
+        player.sendActionBar(Color.of(PlaceholderAPI.setPlaceholders(player, param)));
     }
 }

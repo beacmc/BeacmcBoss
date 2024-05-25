@@ -21,7 +21,7 @@ public class BroadcastAction extends Action {
 
     @Override
     public void execute(Player player, Boss boss, String param) {
-        final String message = PlaceholderAPI.setPlaceholders(player, Color.of(param));
+        final String message = Color.of(PlaceholderAPI.setPlaceholders(player, param));
         System.out.println(message);
         Bukkit.getOnlinePlayers().forEach(p -> p.sendMessage(message));
     }

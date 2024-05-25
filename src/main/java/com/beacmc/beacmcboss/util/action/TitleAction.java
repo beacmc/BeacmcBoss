@@ -21,7 +21,7 @@ public class TitleAction extends Action {
     @Override
     public void execute(Player player, Boss boss, String param) {
 
-        final String message = PlaceholderAPI.setPlaceholders(player, Color.of(param));
+        final String message = Color.of(PlaceholderAPI.setPlaceholders(player, param));
         final String[] args = message.split(";");
 
         if(args.length == 0) {
