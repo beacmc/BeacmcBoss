@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class JavascriptRequirement extends Requirement {
+public class ConditionRequirement extends Requirement {
     @Override
     public String getName() {
         return "[condition]";
