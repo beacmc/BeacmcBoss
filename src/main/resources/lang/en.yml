@@ -1,0 +1,9 @@
+messages:
+  no-permission: "{PREFIX} Insufficient rights"
+  boss-spawned: "{PREFIX} Boss successfully spawned"
+  boss-already-spawned: "{PREFIX} The boss has already spawned"
+  boss-not-spawned: "{PREFIX} The boss is not spawned"
+  boss-stopped: "{PREFIX} Boss successfully stopped"
+  boss-not-found: "{PREFIX} Boss not found"
+  no-args: "{PREFIX} Not enough arguments"
+  boss-tp: "{PREFIX} Teleport to the boss"

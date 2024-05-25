@@ -13,13 +13,35 @@ boss:
     pitch: 0.0
   health: 100.0
 triggers:
+  timer-30-sec:
+    type: TIMER
+    requirements:
+      - '[condition] %beacmcboss_example:time-to-start% == 30'
+    actions:
+      - '[broadcast] &7Boss %beacmcboss_example:display-name% &7will spawn in 30 seconds'
+
+  timer-10-sec:
+    type: TIMER
+    requirements:
+      - '[condition] %beacmcboss_example:time-to-start% == 10'
+    actions:
+      - '[broadcast] &7Boss %beacmcboss_example:display-name% &7will spawn in 10 seconds'
+
+  timer-5-sec:
+    type: TIMER
+    requirements:
+      - '[condition] %beacmcboss_example:time-to-start% == 5'
+    actions:
+      - '[broadcast] &7Boss %beacmcboss_example:display-name% &7will spawn in 5 seconds'
+
+
   spawn:
     type: BOSS_SPAWN
     requirements: []
     actions:
-      - '[broadcast] Boss %beacmcboss_custom_name_example% appeared on {boss-loc-world}: {boss-loc-x} {boss-loc-y} {boss-loc-z}'
+      - '[broadcast] &7Boss %beacmcboss_example:display-name%&7 appeared on %beacmcboss_example:loc-world%: %beacmcboss_example:loc-x% %beacmcboss_example:loc-y% %beacmcboss_example:loc-z%'
   death:
     type: BOSS_DEATH
     requirements: []
     actions:
-      - '[broadcast] Boss %beacmcboss_custom_name_example% death'
+      - '[broadcast] &7Boss %beacmcboss_example:display-name%&7 death'
