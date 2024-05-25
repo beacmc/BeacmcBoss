@@ -2,7 +2,6 @@ package com.beacmc.beacmcboss.boss.config;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import org.bukkit.Location;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
@@ -28,6 +27,10 @@ public class BossConfig {
         return config.getString("boss.display-name");
     }
 
+    public double getCustomDamage() {
+        return config.getDouble("boss.damage", 6.0);
+    }
+
     public Location getSpawnLocation() {
         return config.getLocation("boss.spawn-location");
     }
@@ -40,6 +43,10 @@ public class BossConfig {
         return section.getKeys(false).stream()
                 .map(section::getConfigurationSection)
                 .collect(Collectors.toList());
+    }
+
+    public int getSpawnTimePeriod() {
+        return config.getInt("boss.time-start-period");
     }
 
     public double getHealth() {

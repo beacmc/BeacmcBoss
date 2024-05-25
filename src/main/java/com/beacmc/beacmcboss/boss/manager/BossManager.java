@@ -2,6 +2,8 @@ package com.beacmc.beacmcboss.boss.manager;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.boss.Boss;
+import com.beacmc.beacmcboss.boss.runnable.BossStartPeriodRunnable;
+import com.beacmc.beacmcboss.boss.runnable.TimerRunnable;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.LivingEntity;
 
@@ -25,25 +27,40 @@ public class BossManager {
     }
 
     public void registerBoss(String name, Boss boss) {
-        if(isRegisterBoss(boss) || isRegisterBoss(name)) {
-            logger.severe("Boss " + name + " already registered");
-            return;
-        }
+        try {
+            if (isRegisterBoss(boss) || isRegisterBoss(name)) {
+                logger.severe("Boss " + name + " already registered");
+                return;
+            }
 
-        if (boss.getSpawnLocation() == null) {
-            logger.severe("Boss " + name + "'s spawn location is unknown.");
-            return;
-        }
+            if (boss.getSpawnLocation() == null) {
+                logger.severe("Boss " + name + "'s spawn location is unknown.");
+                return;
+            }
+            boss.setTimerRunnable(new TimerRunnable(boss));
+            boss.setBossStartRunnable(new BossStartPeriodRunnable(boss));
 
-        registerBosses.put(name, boss);
+            registerBosses.put(name, boss);
+        } catch (IllegalArgumentException e) { }
     }
 
     public void unregisterBoss(String name, Boss boss) {
         if(isRegisterBoss(boss) || isRegisterBoss(name)) {
+            boss.getBossStartRunnable().cancel();
+            boss.getNearbyRunnable().cancel();
+            boss.getTimerRunnable().cancel();
             registerBosses.remove(name, boss);
             return;
         }
         logger.severe("Boss " + name + " not registered");
+    }
+
+    public void unregisterAll() {
+        registerBosses.values().forEach(boss -> {
+            if(boss.isSpawned())
+                boss.despawn(null);
+        });
+        registerBosses.clear();
     }
 
     private void loadBosses() {

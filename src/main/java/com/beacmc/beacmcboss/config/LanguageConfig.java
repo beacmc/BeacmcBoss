@@ -15,4 +15,6 @@ public interface LanguageConfig {
     String getBossNotFoundMessage();
 
     String getNoArgsMessage();
+
+    String getBossTpMessage();
 }

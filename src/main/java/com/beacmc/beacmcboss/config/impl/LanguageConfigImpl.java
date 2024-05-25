@@ -17,6 +17,7 @@ public class LanguageConfigImpl implements LanguageConfig {
     private final String bossStoppedMessage;
     private final String bossNotFoundMessage;
     private final String noArgsMessage;
+    private final String bossTpMessage;
 
     public LanguageConfigImpl() {
         config = BeacmcBoss.getLocaleConfig();
@@ -28,6 +29,11 @@ public class LanguageConfigImpl implements LanguageConfig {
         bossStoppedMessage = messages.getString("boss-stopped");
         bossNotFoundMessage = messages.getString("boss-not-found");
         noArgsMessage = messages.getString("boss-not-found");
+        bossTpMessage = messages.getString("boss-tp");
+    }
+
+    public String getBossTpMessage() {
+        return bossTpMessage;
     }
 
     public String getNoArgsMessage() {

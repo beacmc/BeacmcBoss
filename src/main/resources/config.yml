@@ -3,13 +3,19 @@ settings:
   # use in languages files
   prefix: ""
 
+  # directory: lang
+  locale-file: "ru.yml"
+
   # used in TIMER trigger
   #
   # 1 second = 20 ticks
-  timer-time: 15
+  timer-time: 20
 
   # used in NEARBY_PLAYERS trigger
   nearby-radius: 10
+
+  # The NEARBY_PLAYERS trigger will execute every 30 seconds.
+  nearby-execute-time: 30
 
 # directory: bosses
 bosses:

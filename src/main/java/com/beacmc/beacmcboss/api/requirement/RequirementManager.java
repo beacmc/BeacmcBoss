@@ -57,6 +57,9 @@ public class RequirementManager {
     }
 
     public boolean executeRequirements(Player player, Boss boss, List<String> requirements) {
+        if(requirements.isEmpty())
+            return true;
+
         for (String execute : requirements) {
             for (Requirement req : registerRequirements) {
                 String name = req.getName();

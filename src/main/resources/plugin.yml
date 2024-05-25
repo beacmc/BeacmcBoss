@@ -2,4 +2,9 @@ name: BeacmcBoss
 version: '${project.version}'
 main: com.beacmc.beacmcboss.BeacmcBoss
 api-version: '1.16'
-load: STARTUP
+load: POSTWORLD
+commands:
+  boss:
+    aliases:
+      - bosses
+      - beacmcbosses

@@ -21,12 +21,12 @@ public class BossDeathEvent extends Event implements Cancellable {
 
     @Override
     public @NotNull HandlerList getHandlers() {
-        return null;
+        return handlers;
     }
 
 
     public static HandlerList getHandlerList() {
-        return null;
+        return handlers;
     }
 
     @Override

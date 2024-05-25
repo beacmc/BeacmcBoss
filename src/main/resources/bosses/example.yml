@@ -1,6 +1,8 @@
 boss:
   display-name: "#ffbb00&lExample Boss"
   entity-type: ZOMBIE
+  time-start-period: 5 # in minutes
+  damage: 20.0
   spawn-location:
     ==: org.bukkit.Location
     world: world
@@ -15,5 +17,9 @@ triggers:
     type: BOSS_SPAWN
     requirements: []
     actions:
-      - '[broadcast] Boss {boss-name} appeared on {boss-loc-world}: {boss-loc-x} {boss-loc-y} {boss-loc-z}'
-  
+      - '[broadcast] Boss %beacmcboss_custom_name_example% appeared on {boss-loc-world}: {boss-loc-x} {boss-loc-y} {boss-loc-z}'
+  death:
+    type: BOSS_DEATH
+    requirements: []
+    actions:
+      - '[broadcast] Boss %beacmcboss_custom_name_example% death'

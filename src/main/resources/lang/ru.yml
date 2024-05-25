@@ -6,3 +6,4 @@ messages:
   boss-stopped: "{PREFIX} Босс успешно остановлен"
   boss-not-found: "{PREFIX} Босс не найден"
   no-args: "{PREFIX} Недостаточно аргументов"
+  boss-tp: "{PREFIX} Телепортация к боссу"

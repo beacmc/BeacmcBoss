@@ -9,6 +9,7 @@ import com.beacmc.beacmcboss.config.BaseConfig;
 import com.beacmc.beacmcboss.config.LanguageConfig;
 import com.beacmc.beacmcboss.config.impl.BaseConfigImpl;
 import com.beacmc.beacmcboss.config.impl.LanguageConfigImpl;
+import com.beacmc.beacmcboss.hook.papi.Expansion;
 import com.beacmc.beacmcboss.listener.BossListener;
 import com.beacmc.beacmcboss.util.action.*;
 import com.beacmc.beacmcboss.util.requirement.BooleanRequirement;
@@ -48,12 +49,14 @@ public final class BeacmcBoss extends JavaPlugin {
         actionManager.registerActions(new ActionbarAction(), new TitleAction(), new BroadcastAction(), new SoundAction(), new ConsoleAction(), new MessageAction());
         requirementManager.registerRequirements(new BooleanRequirement(), new ConditionRequirement());
 
+        new Expansion().register();
         this.getServer().getPluginManager().registerEvents(new BossListener(), this);
         this.getCommand("boss").setExecutor(new BossCommand());
     }
 
     @Override
     public void onDisable() {
+        bossManager.unregisterAll();
         instance = null;
     }
 
