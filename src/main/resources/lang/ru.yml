@@ -1,0 +1,8 @@
+messages:
+  no-permission: "{PREFIX} Недостаточно прав"
+  boss-spawned: "{PREFIX} Босс успешно заспавнен"
+  boss-already-spawned: "{PREFIX} Босс уже заспавнен"
+  boss-not-spawned: "{PREFIX} Босс не заспавнен"
+  boss-stopped: "{PREFIX} Босс успешно остановлен"
+  boss-not-found: "{PREFIX} Босс не найден"
+  no-args: "{PREFIX} Недостаточно аргументов"
