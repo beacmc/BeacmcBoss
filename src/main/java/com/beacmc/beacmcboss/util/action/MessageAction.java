@@ -23,6 +23,9 @@ public class MessageAction extends Action {
 
     @Override
     public void execute(Player player, Boss boss, String param) {
+        if(player == null)
+            return;
+
         player.sendMessage(Color.of(PlaceholderAPI.setPlaceholders(player, param)));
     }
 }

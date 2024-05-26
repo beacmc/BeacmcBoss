@@ -20,6 +20,8 @@ public class TitleAction extends Action {
 
     @Override
     public void execute(Player player, Boss boss, String param) {
+        if(player == null)
+            return;
 
         final String message = Color.of(PlaceholderAPI.setPlaceholders(player, param));
         final String[] args = message.split(";");

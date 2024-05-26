@@ -29,6 +29,7 @@ public final class BeacmcBoss extends JavaPlugin {
     private static LanguageConfig languageConfig;
     private static BaseConfig baseConfig;
     private static YamlConfiguration dataConfig;
+    private static Expansion expansion;
     private static YamlConfiguration localeConfig;
 
     @Override
@@ -46,10 +47,11 @@ public final class BeacmcBoss extends JavaPlugin {
 
         bossManager = new BossManager();
 
-        actionManager.registerActions(new ActionbarAction(), new TitleAction(), new BroadcastAction(), new SoundAction(), new ConsoleAction(), new MessageAction());
+        actionManager.registerActions(new DamageAction(), new FireAction(), new SummonAction(), new ActionbarAction(), new TitleAction(), new BroadcastAction(), new SoundAction(), new ConsoleAction(), new MessageAction());
         requirementManager.registerRequirements(new BooleanRequirement(), new ConditionRequirement());
 
-        new Expansion().register();
+        expansion = new Expansion();
+        expansion.register();
         this.getServer().getPluginManager().registerEvents(new BossListener(), this);
         this.getCommand("boss").setExecutor(new BossCommand());
     }
@@ -57,6 +59,7 @@ public final class BeacmcBoss extends JavaPlugin {
     @Override
     public void onDisable() {
         bossManager.unregisterAll();
+        expansion.unregister();
         instance = null;
     }
 
