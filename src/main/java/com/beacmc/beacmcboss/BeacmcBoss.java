@@ -47,8 +47,9 @@ public final class BeacmcBoss extends JavaPlugin {
 
         bossManager = new BossManager();
 
-        actionManager.registerActions(new DamageAction(), new FireAction(), new SummonAction(), new ActionbarAction(), new TitleAction(), new BroadcastAction(), new SoundAction(), new ConsoleAction(), new MessageAction());
+        actionManager.registerActions(new BossEquipAction(), new BroadcastSoundAction(), new DamageAction(), new FireAction(), new SummonAction(), new ActionbarAction(), new TitleAction(), new BroadcastAction(), new SoundAction(), new ConsoleAction(), new MessageAction());
         requirementManager.registerRequirements(new BooleanRequirement(), new ConditionRequirement());
+
 
         expansion = new Expansion();
         expansion.register();

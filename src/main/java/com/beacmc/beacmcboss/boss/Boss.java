@@ -12,12 +12,16 @@ import com.beacmc.beacmcboss.boss.runnable.NearbyRunnable;
 import com.beacmc.beacmcboss.util.Color;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Zombie;
+import org.bukkit.inventory.EntityEquipment;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
@@ -37,7 +41,7 @@ public class Boss extends BossConfig {
     private final Logger logger;
 
     public Boss(File file) {
-        super(YamlConfiguration.loadConfiguration(file));
+        super(file);
         plugin = BeacmcBoss.getInstance();
         triggerManager = BeacmcBoss.getTriggerManager();
         logger = plugin.getLogger();
@@ -95,6 +99,10 @@ public class Boss extends BossConfig {
 
     public int getTimeToStart() {
         return bossStartRunnable.getSeconds();
+    }
+
+    public int getLifetime() {
+        return bossStartRunnable.getLifetime();
     }
 
     public String getLastKiller() {

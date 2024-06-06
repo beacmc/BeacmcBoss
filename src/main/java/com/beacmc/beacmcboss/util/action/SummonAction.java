@@ -36,17 +36,13 @@ public class SummonAction extends Action {
         Matcher locationMatcher = LOCATION_PATTERN.matcher(param);
         Matcher entityMatcher = ENTITY_PATTERN.matcher(param);
 
-        if (!locationMatcher.find() || !entityMatcher.find()) {
-            System.out.println("not find");
+        if (!locationMatcher.find() || !entityMatcher.find())
             return;
-        }
-
 
         String name = entityMatcher.group(1);
         World world = Bukkit.getWorld(locationMatcher.group(1));
 
         if (world == null) {
-            System.out.println("null world");
             return;
         }
 
@@ -58,7 +54,6 @@ public class SummonAction extends Action {
             y = Double.parseDouble(locationMatcher.group(3));
             z = Double.parseDouble(locationMatcher.group(4));
         } catch (NumberFormatException e) {
-            System.out.println("number ex");
             return;
         }
 
@@ -67,9 +62,6 @@ public class SummonAction extends Action {
         try {
             EntityType type = EntityType.valueOf(name.toUpperCase());
             world.spawnEntity(location, type);
-            System.out.println("summon entity");
-        } catch (IllegalArgumentException e) {
-            System.out.println("invalid entity");
-        }
+        } catch (IllegalArgumentException e) { }
     }
 }

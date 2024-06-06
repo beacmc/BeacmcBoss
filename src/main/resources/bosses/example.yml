@@ -3,6 +3,12 @@ boss:
   entity-type: ZOMBIE
   time-start-period: 5 # in minutes
   damage: 20.0
+  equip:
+    helmet: {}
+    chestplate: {}
+    leggings: {}
+    boots: {}
+    main-hand: {}
   spawn-location:
     ==: org.bukkit.Location
     world: world

@@ -2,10 +2,13 @@ package com.beacmc.beacmcboss.boss.config;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
@@ -14,11 +17,13 @@ import java.util.stream.Collectors;
 public class BossConfig {
 
     private YamlConfiguration config;
+    private File file;
     private final BeacmcBoss plugin;
     private final Logger logger;
 
-    public BossConfig(YamlConfiguration config) {
-        this.config = config;
+    public BossConfig(File file) {
+        this.file = file;
+        this.config = YamlConfiguration.loadConfiguration(file);
         plugin = BeacmcBoss.getInstance();
         logger = plugin.getLogger();
     }
@@ -64,5 +69,15 @@ public class BossConfig {
 
     public YamlConfiguration getYamlConfiguration() {
         return config;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    private void saveConfig() {
+        try {
+            config.save(file);
+        } catch (IOException e) { }
     }
 }

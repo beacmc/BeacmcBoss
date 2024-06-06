@@ -1,10 +1,19 @@
 package com.beacmc.beacmcboss.util.action;
 
+import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.action.Action;
 import com.beacmc.beacmcboss.boss.Boss;
 import org.bukkit.entity.Player;
 
+import java.util.logging.Logger;
+
 public class DamageAction extends Action {
+
+    private final Logger logger;
+
+    public DamageAction() {
+        this.logger = BeacmcBoss.getInstance().getLogger();
+    }
 
     @Override
     public String getName() {
@@ -23,6 +32,8 @@ public class DamageAction extends Action {
 
         try {
             player.damage(Double.parseDouble(param));
-        } catch (NumberFormatException e) { }
+        } catch (NumberFormatException e) {
+            logger.severe("A number in action was expected but you didn't specify it");
+        }
     }
 }
