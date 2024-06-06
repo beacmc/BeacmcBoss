@@ -18,14 +18,18 @@ public class MessageAction extends Action {
 
     @Override
     public String getDescription() {
-        return "send message to player";
+        return "send message to player or console sender";
     }
 
     @Override
     public void execute(Player player, Boss boss, String param) {
-        if(player == null)
-            return;
+        final String message = Color.of(PlaceholderAPI.setPlaceholders(player, param));
 
-        player.sendMessage(Color.of(PlaceholderAPI.setPlaceholders(player, param)));
+        if(player == null) {
+            System.out.println(message);
+            return;
+        }
+
+        player.sendMessage(message);
     }
 }
