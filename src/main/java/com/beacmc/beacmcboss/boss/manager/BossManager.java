@@ -5,12 +5,14 @@ import com.beacmc.beacmcboss.boss.Boss;
 import com.beacmc.beacmcboss.boss.runnable.BossStartPeriodRunnable;
 import com.beacmc.beacmcboss.boss.runnable.TimerRunnable;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
 import javax.annotation.Nullable;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 
 public class BossManager {
@@ -74,17 +76,29 @@ public class BossManager {
         });
     }
 
-    @Nullable
-    public Boss getBossByName(String name) {
+
+    public @Nullable Boss getBossByName(String name) {
         return registerBosses.get(name);
     }
 
-    public Boss getBossByEntity(LivingEntity entity) {
+    public @Nullable Boss getBossByEntity(LivingEntity entity) {
         for (Boss boss : registerBosses.values()) {
             if (boss.getLivingEntity() == entity)
                 return boss;
         }
         return null;
+    }
+
+    public boolean exists(Boss boss) {
+        return registerBosses.containsValue(boss);
+    }
+
+    public boolean exists(LivingEntity entity) {
+        return getBossByEntity(entity) != null;
+    }
+
+    public boolean exists(String bossName) {
+        return registerBosses.containsKey(bossName);
     }
 
     public boolean isRegisterBoss(String name) {
