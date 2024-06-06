@@ -33,9 +33,9 @@ public class BossListener implements Listener {
         final LivingEntity entity = event.getEntity();
         final YamlConfiguration data = BeacmcBoss.getDataConfig();
         final Boss boss = bossManager.getBossByEntity(entity);
-        final Player killer = event.getEntity().getKiller();
+        final Player killer = entity.getKiller();
 
-        if(boss != null) {
+        if(bossManager.exists(boss)) {
             BossDeathEvent bossDeathEvent = new BossDeathEvent(boss, killer);
             bossDeathEvent.callEvent();
 
@@ -44,17 +44,23 @@ public class BossListener implements Listener {
                 return;
             }
 
-            try {
-                File file = new File(BeacmcBoss.getInstance().getDataFolder(), "data.yml");
-                data.load(file);
-                data.set("bosses." + boss.getName() + ".last-killer", killer.getName());
-                data.save(file);
-            } catch (IOException | InvalidConfigurationException e) { }
+            if (killer != null) {
+                try {
+                    File file = new File(BeacmcBoss.getInstance().getDataFolder(), "data.yml");
+                    data.load(file);
+                    data.set("bosses." + boss.getName() + ".last-killer", killer.getName());
+                    data.save(file);
+                } catch (IOException | InvalidConfigurationException e) { }
+            }
+
+            event.getDrops().clear();
+            event.setDroppedExp(0);
 
             triggerManager.executeTriggers(killer, boss, TriggerType.BOSS_DEATH);
             boss.setLivingEntity(null);
         }
     }
+
 
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
@@ -64,7 +70,7 @@ public class BossListener implements Listener {
         final LivingEntity entity = (LivingEntity) event.getDamager();
         final Boss boss = bossManager.getBossByEntity(entity);
 
-        if(boss != null) {
+        if(bossManager.exists(boss)) {
             event.setDamage(boss.getCustomDamage());
         }
     }
