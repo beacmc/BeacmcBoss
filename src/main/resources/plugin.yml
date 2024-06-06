@@ -3,6 +3,8 @@ version: '${project.version}'
 main: com.beacmc.beacmcboss.BeacmcBoss
 api-version: '1.16'
 load: POSTWORLD
+depend:
+  - PlaceholderAPI
 commands:
   boss:
     aliases:
