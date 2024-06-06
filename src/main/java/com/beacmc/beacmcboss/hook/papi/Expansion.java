@@ -61,6 +61,8 @@ public class Expansion extends PlaceholderExpansion {
 
                 case "time-to-start" -> String.valueOf(boss.getTimeToStart());
 
+                case "lifetime" -> String.valueOf(boss.getLifetime());
+
                 case "health" -> String.valueOf(entity.getHealth());
 
                 case "loc-x" -> String.valueOf(location.getBlockX());
