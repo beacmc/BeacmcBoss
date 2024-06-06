@@ -28,7 +28,7 @@ public class LanguageConfigImpl implements LanguageConfig {
         bossNotSpawnedMessage = messages.getString("boss-not-spawned");
         bossStoppedMessage = messages.getString("boss-stopped");
         bossNotFoundMessage = messages.getString("boss-not-found");
-        noArgsMessage = messages.getString("boss-not-found");
+        noArgsMessage = messages.getString("no-args");
         bossTpMessage = messages.getString("boss-tp");
     }
 
