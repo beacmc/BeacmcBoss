@@ -4,24 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="refactor code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BossEquipAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BroadcastSoundAction.java" afterDir="false" />
+    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="migration to version 1.2 and multiple code refactoring">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossBarRunnable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BossStartAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BossStopAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/config/BossConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/config/BossConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/manager/BossManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/manager/BossManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossStartPeriodRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossStartPeriodRunnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/LanguageConfigImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/LanguageConfigImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/DamageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/DamageAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/MessageAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/MessageAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/BaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/BaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfigImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfigImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BroadcastSoundAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BroadcastSoundAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/FireAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/FireAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SoundAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SoundAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SummonAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SummonAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bosses/example.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bosses/example.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +254,63 @@
       <option name="project" value="LOCAL" />
       <updated>1716745392458</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="add [equip] and [broadcast_sound] actions">
+      <created>1717675781491</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1717675781491</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add BossManager#exists method">
+      <created>1717675799501</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1717675799501</updated>
+    </task>
+    <task id="LOCAL-00026" summary="lifetime function">
+      <created>1717675842912</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1717675842912</updated>
+    </task>
+    <task id="LOCAL-00027" summary="adding PlaceholderAPI to the list of dependencies">
+      <created>1717675924849</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1717675924849</updated>
+    </task>
+    <task id="LOCAL-00028" summary="adding the ability to send a message to the console if a player is not found">
+      <created>1717675972074</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1717675972074</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Bug fix when a boss died for personal reasons, it was a bug on the plugin side">
+      <created>1717676052331</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1717676052331</updated>
+    </task>
+    <task id="LOCAL-00030" summary="fixed no-args message">
+      <created>1717676067195</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1717676067195</updated>
+    </task>
+    <task id="LOCAL-00031" summary="migration to version 1.2 and multiple code refactoring">
+      <created>1717676119581</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1717676119581</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -271,9 +325,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add 2 types requirement" />
-    <MESSAGE value="add example boss" />
-    <MESSAGE value="add Color util" />
     <MESSAGE value="add events" />
     <MESSAGE value="add more actions" />
     <MESSAGE value="refactor example boss" />
@@ -291,6 +342,14 @@
     <MESSAGE value="design change" />
     <MESSAGE value="add multiply actions" />
     <MESSAGE value="refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
+    <MESSAGE value="add [equip] and [broadcast_sound] actions" />
+    <MESSAGE value="add BossManager#exists method" />
+    <MESSAGE value="lifetime function" />
+    <MESSAGE value="adding PlaceholderAPI to the list of dependencies" />
+    <MESSAGE value="adding the ability to send a message to the console if a player is not found" />
+    <MESSAGE value="Bug fix when a boss died for personal reasons, it was a bug on the plugin side" />
+    <MESSAGE value="fixed no-args message" />
+    <MESSAGE value="migration to version 1.2 and multiple code refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="migration to version 1.2 and multiple code refactoring" />
   </component>
 </project>

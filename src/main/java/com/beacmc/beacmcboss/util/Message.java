@@ -2,6 +2,7 @@ package com.beacmc.beacmcboss.util;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.config.BaseConfig;
+import me.clip.placeholderapi.PlaceholderAPI;
 
 public class Message {
 

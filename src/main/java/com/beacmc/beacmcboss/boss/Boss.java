@@ -7,8 +7,10 @@ import com.beacmc.beacmcboss.api.trigger.TriggerManager;
 import com.beacmc.beacmcboss.api.trigger.TriggerType;
 import com.beacmc.beacmcboss.boss.config.BossConfig;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
+import com.beacmc.beacmcboss.boss.runnable.BossBarRunnable;
 import com.beacmc.beacmcboss.boss.runnable.BossStartPeriodRunnable;
 import com.beacmc.beacmcboss.boss.runnable.NearbyRunnable;
+import com.beacmc.beacmcboss.config.BaseConfig;
 import com.beacmc.beacmcboss.util.Color;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -36,13 +38,16 @@ public class Boss extends BossConfig {
 
     private BossStartPeriodRunnable bossStartRunnable;
     private BukkitRunnable timerRunnable;
+    private BossBarRunnable bossBarRunnable;
     private LivingEntity entity;
     private final TriggerManager triggerManager;
     private final Logger logger;
+    private final BaseConfig config;
 
     public Boss(File file) {
         super(file);
         plugin = BeacmcBoss.getInstance();
+        config = BeacmcBoss.getBaseConfig();
         triggerManager = BeacmcBoss.getTriggerManager();
         logger = plugin.getLogger();
     }
@@ -52,6 +57,9 @@ public class Boss extends BossConfig {
     }
 
     public void spawn() {
+        if (isSpawned())
+            return;
+
         Location location = getSpawnLocation();
         World world = location.getWorld();
         try {
@@ -65,6 +73,9 @@ public class Boss extends BossConfig {
             entity.setCustomName(Color.of(getDisplayName()));
             entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(getHealth());
             entity.setHealth(getHealth());
+            if (config.isBossBarEnable()) {
+                setBossBarRunnable(new BossBarRunnable(this));
+            }
             setNearbyRunnable(new NearbyRunnable(this));
             triggerManager.executeTriggers(null, this, TriggerType.BOSS_SPAWN);
         } catch (ClassCastException e) {
@@ -91,6 +102,10 @@ public class Boss extends BossConfig {
             } catch (IOException | InvalidConfigurationException e) { }
 
             getNearbyRunnable().cancel();
+            if (bossBarRunnable != null) {
+                bossBarRunnable.clear();
+                setBossBarRunnable(null);
+            }
             triggerManager.executeTriggers(null, this, TriggerType.BOSS_DEATH);
             entity.remove();
             entity = null;
@@ -106,7 +121,7 @@ public class Boss extends BossConfig {
     }
 
     public String getLastKiller() {
-        YamlConfiguration data = BeacmcBoss.getDataConfig();
+        final YamlConfiguration data = BeacmcBoss.getDataConfig();
         return data.getString("bosses." + getName() + ".last-killer");
     }
 
@@ -143,6 +158,14 @@ public class Boss extends BossConfig {
 
     public void setBossStartRunnable(BossStartPeriodRunnable bossStartRunnable) {
         this.bossStartRunnable = bossStartRunnable;
+    }
+
+    public BossBarRunnable getBossBarRunnable() {
+        return bossBarRunnable;
+    }
+
+    public void setBossBarRunnable(BossBarRunnable bossBarRunnable) {
+        this.bossBarRunnable = bossBarRunnable;
     }
 
     public void setTimerRunnable(BukkitRunnable timerRunnable) {

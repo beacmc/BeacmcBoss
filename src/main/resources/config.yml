@@ -17,6 +17,18 @@ settings:
   # The NEARBY_PLAYERS trigger will execute every 30 seconds.
   nearby-execute-time: 30
 
+  boss-bar:
+    enable: true
+
+    # PlaceholderAPI support
+    text: "%beacmcboss_example:display-name%"
+
+    # https://helpch.at/docs/1.16.5/org/bukkit/boss/BarStyle
+    bar-style: SOLID
+
+    # https://helpch.at/docs/1.16.5/org/bukkit/boss/BarColor
+    bar-color: BLUE
+
 # directory: bosses
 bosses:
 
