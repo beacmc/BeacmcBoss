@@ -36,13 +36,16 @@ public class SummonAction extends Action {
         Matcher locationMatcher = LOCATION_PATTERN.matcher(param);
         Matcher entityMatcher = ENTITY_PATTERN.matcher(param);
 
-        if (!locationMatcher.find() || !entityMatcher.find())
+        if (!locationMatcher.find() || !entityMatcher.find()) {
+            logger.severe("location or creature not found ");
             return;
+        }
 
         String name = entityMatcher.group(1);
         World world = Bukkit.getWorld(locationMatcher.group(1));
 
         if (world == null) {
+            logger.severe("world cannot be found");
             return;
         }
 
@@ -53,7 +56,8 @@ public class SummonAction extends Action {
             x = Double.parseDouble(locationMatcher.group(2));
             y = Double.parseDouble(locationMatcher.group(3));
             z = Double.parseDouble(locationMatcher.group(4));
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
+            logger.severe("was expected to be a number, but you set a different character.");
             return;
         }
 
@@ -62,6 +66,8 @@ public class SummonAction extends Action {
         try {
             EntityType type = EntityType.valueOf(name.toUpperCase());
             world.spawnEntity(location, type);
-        } catch (IllegalArgumentException e) { }
+        } catch (IllegalArgumentException e) {
+            logger.severe("the creature can't be found");
+        }
     }
 }

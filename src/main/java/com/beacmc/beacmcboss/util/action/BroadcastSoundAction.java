@@ -45,6 +45,8 @@ public class BroadcastSoundAction extends Action {
                 p.playSound(
                         p.getLocation(), Sound.valueOf(param), 1.0f, 1.0f)
             );
+        } catch (NumberFormatException | NullPointerException e) {
+            logger.severe("was expected to be a number, but you set a different character.");
         } catch (IllegalArgumentException e) {
             logger.severe("Sound not found");
         }

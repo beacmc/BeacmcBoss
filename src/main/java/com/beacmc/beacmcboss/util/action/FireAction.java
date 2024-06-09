@@ -1,11 +1,19 @@
 package com.beacmc.beacmcboss.util.action;
 
+import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.action.Action;
 import com.beacmc.beacmcboss.boss.Boss;
 import org.bukkit.entity.Player;
 
+import java.util.logging.Logger;
+
 public class FireAction extends Action {
 
+    private final Logger logger;
+
+    public FireAction() {
+        logger = BeacmcBoss.getInstance().getLogger();
+    }
 
     @Override
     public String getName() {
@@ -25,7 +33,9 @@ public class FireAction extends Action {
         int fireTicks = 20;
         try {
             fireTicks = Integer.parseInt(param);
-        } catch (NumberFormatException e) { }
+        } catch (NumberFormatException e) {
+            logger.severe("was expected to be a number, but you set a different character.");
+        }
 
         player.setFireTicks(fireTicks);
     }

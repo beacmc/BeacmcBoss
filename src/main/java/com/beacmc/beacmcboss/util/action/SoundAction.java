@@ -3,6 +3,7 @@ package com.beacmc.beacmcboss.util.action;
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.action.Action;
 import com.beacmc.beacmcboss.boss.Boss;
+import org.apache.commons.lang.NullArgumentException;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
@@ -39,6 +40,8 @@ public class SoundAction extends Action {
                 return;
             }
             player.playSound(player.getLocation(), Sound.valueOf(param), 1.0f, 1.0f);
+        } catch (NumberFormatException | NullPointerException e) {
+            logger.severe("was expected to be a number, but you set a different character.");
         } catch (IllegalArgumentException e) {
             logger.severe("Sound not found");
         }
