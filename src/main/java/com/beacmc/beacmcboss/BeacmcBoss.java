@@ -1,6 +1,8 @@
 package com.beacmc.beacmcboss;
 
 import com.beacmc.beacmcboss.api.action.ActionManager;
+import com.beacmc.beacmcboss.api.addon.AddonManager;
+import com.beacmc.beacmcboss.api.addon.BossAddon;
 import com.beacmc.beacmcboss.api.requirement.RequirementManager;
 import com.beacmc.beacmcboss.api.trigger.TriggerManager;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
@@ -30,6 +32,7 @@ public final class BeacmcBoss extends JavaPlugin {
     private static BaseConfig baseConfig;
     private static YamlConfiguration dataConfig;
     private static Expansion expansion;
+    private static AddonManager addonManager;
     private static YamlConfiguration localeConfig;
 
     @Override
@@ -44,12 +47,13 @@ public final class BeacmcBoss extends JavaPlugin {
         actionManager = new ActionManager();
         requirementManager = new RequirementManager();
         triggerManager = new TriggerManager();
-
         bossManager = new BossManager();
 
         actionManager.registerActions(new BossStartAction(), new BossStopAction(), new BossEquipAction(), new BroadcastSoundAction(), new DamageAction(), new FireAction(), new SummonAction(), new ActionbarAction(), new TitleAction(), new BroadcastAction(), new SoundAction(), new ConsoleAction(), new MessageAction());
         requirementManager.registerRequirements(new BooleanRequirement(), new ConditionRequirement());
 
+        addonManager = new AddonManager();
+        addonManager.loadAddons();
 
         expansion = new Expansion();
         expansion.register();
@@ -59,6 +63,7 @@ public final class BeacmcBoss extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        addonManager.unloadAddons();
         bossManager.unregisterAll();
         expansion.unregister();
         instance = null;

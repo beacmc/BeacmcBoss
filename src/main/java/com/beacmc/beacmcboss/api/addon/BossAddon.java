@@ -29,6 +29,7 @@ public abstract class BossAddon {
         this.name = name;
         this.version = version;
         this.file = file;
+        this.enabled = false;
         this.beacmcBoss = BeacmcBoss.getInstance();
         this.urlClassLoader = urlClassLoader;
         classLoader = getClass().getClassLoader();
