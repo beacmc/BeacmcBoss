@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="BeacmcBoss:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="migration to version 1.2 and multiple code refactoring">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossBarRunnable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BossStartAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BossStopAction.java" afterDir="false" />
+    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="load addons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/BaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/BaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfigImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfigImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BroadcastSoundAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BroadcastSoundAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/FireAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/FireAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SoundAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SoundAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SummonAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SummonAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/addon/AddonManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/addon/AddonManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +44,10 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sergey/IdeaProjects/BeacmcDiscord&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.25839552&quot;
   }
 }</component>
   <component name="RunManager">
@@ -310,7 +303,63 @@
       <option name="project" value="LOCAL" />
       <updated>1717676119581</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="add BossStartAction and BossStopAction">
+      <created>1717917416219</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1717917416219</updated>
+    </task>
+    <task id="LOCAL-00033" summary="add BossBar to bosses">
+      <created>1717917437461</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1717917437461</updated>
+    </task>
+    <task id="LOCAL-00034" summary="added debug mode in actions">
+      <created>1717917495408</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1717917495408</updated>
+    </task>
+    <task id="LOCAL-00035" summary="refactor code">
+      <created>1717917510152</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1717917510152</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add boss addon">
+      <created>1718284048601</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1718284048601</updated>
+    </task>
+    <task id="LOCAL-00037" summary="remove maven plugin compiler">
+      <created>1718299131018</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1718299131018</updated>
+    </task>
+    <task id="LOCAL-00038" summary="add AddonManager">
+      <created>1718299139695</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1718299139695</updated>
+    </task>
+    <task id="LOCAL-00039" summary="load addons">
+      <created>1718299147633</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1718299147633</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -325,13 +374,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add events" />
-    <MESSAGE value="add more actions" />
-    <MESSAGE value="refactor example boss" />
-    <MESSAGE value="refactor Color util" />
-    <MESSAGE value="add BossManager" />
-    <MESSAGE value="add configuration interface" />
-    <MESSAGE value="add broadcast action" />
     <MESSAGE value="add Message util" />
     <MESSAGE value="rename ConditionRequirement" />
     <MESSAGE value="add Nearby add Timer runnable" />
@@ -341,7 +383,6 @@
     <MESSAGE value="fix color error" />
     <MESSAGE value="design change" />
     <MESSAGE value="add multiply actions" />
-    <MESSAGE value="refactor code" />
     <MESSAGE value="add [equip] and [broadcast_sound] actions" />
     <MESSAGE value="add BossManager#exists method" />
     <MESSAGE value="lifetime function" />
@@ -350,6 +391,14 @@
     <MESSAGE value="Bug fix when a boss died for personal reasons, it was a bug on the plugin side" />
     <MESSAGE value="fixed no-args message" />
     <MESSAGE value="migration to version 1.2 and multiple code refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="migration to version 1.2 and multiple code refactoring" />
+    <MESSAGE value="add BossStartAction and BossStopAction" />
+    <MESSAGE value="add BossBar to bosses" />
+    <MESSAGE value="added debug mode in actions" />
+    <MESSAGE value="refactor code" />
+    <MESSAGE value="add boss addon" />
+    <MESSAGE value="remove maven plugin compiler" />
+    <MESSAGE value="add AddonManager" />
+    <MESSAGE value="load addons" />
+    <option name="LAST_COMMIT_MESSAGE" value="load addons" />
   </component>
 </project>

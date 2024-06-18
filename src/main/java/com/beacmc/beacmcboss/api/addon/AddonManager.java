@@ -23,11 +23,13 @@ public class AddonManager {
         File addonsDir = new File(BeacmcBoss.getInstance().getDataFolder(), "addons");
         File[] files = addonsDir.listFiles();
 
+        System.out.println(files);
+
         if(!addonsDir.exists()) {
             addonsDir.mkdirs();
         }
 
-        assert files != null;
+        if(files == null) return;
 
         for (File file : files) {
             loadAddon(file);
@@ -67,15 +69,11 @@ public class AddonManager {
     }
 
     public void enableAddon(BossAddon addon) {
-        if (!isLoad(addon.getName())) {
-            addon.setEnabled(true);
-        }
+        addon.setEnabled(true);
     }
 
     public void disableAddon(BossAddon addon) {
-        if (isLoad(addon.getName())) {
-            addon.setEnabled(false);
-        }
+        addon.setEnabled(false);
     }
 
     public void unloadAddons() {
