@@ -23,8 +23,6 @@ public class AddonManager {
         File addonsDir = new File(BeacmcBoss.getInstance().getDataFolder(), "addons");
         File[] files = addonsDir.listFiles();
 
-        System.out.println(files);
-
         if(!addonsDir.exists()) {
             addonsDir.mkdirs();
         }
