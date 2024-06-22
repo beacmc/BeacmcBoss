@@ -64,7 +64,7 @@ public class Boss extends BossConfig {
         World world = location.getWorld();
         try {
             BossSpawnEvent event = new BossSpawnEvent(this);
-            event.callEvent();
+            BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(event);
             if(event.isCancelled())
                 return;
 
@@ -88,7 +88,7 @@ public class Boss extends BossConfig {
 
         if(isSpawned()) {
             BossDeathEvent event = new BossDeathEvent(this, killer);
-            event.callEvent();
+            BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(event);
             if(event.isCancelled())
                 return;
 

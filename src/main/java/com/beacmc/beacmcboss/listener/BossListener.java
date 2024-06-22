@@ -37,7 +37,7 @@ public class BossListener implements Listener {
 
         if(bossManager.exists(boss)) {
             BossDeathEvent bossDeathEvent = new BossDeathEvent(boss, killer);
-            bossDeathEvent.callEvent();
+            BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(bossDeathEvent);
 
             if(bossDeathEvent.isCancelled()) {
                 event.setCancelled(true);

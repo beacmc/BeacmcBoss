@@ -5,11 +5,13 @@ import com.beacmc.beacmcboss.api.trigger.TriggerManager;
 import com.beacmc.beacmcboss.api.trigger.TriggerType;
 import com.beacmc.beacmcboss.boss.Boss;
 import com.beacmc.beacmcboss.config.BaseConfig;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class NearbyRunnable extends BukkitRunnable {
 
@@ -30,7 +32,9 @@ public class NearbyRunnable extends BukkitRunnable {
     public void run() {
         LivingEntity entity = boss.getLivingEntity();
         if (entity != null) {
-            Collection<Player> list = entity.getLocation().getNearbyPlayers(config.getNearbyRadius());
+            Collection<Player> list = Bukkit.getOnlinePlayers().stream()
+                    .filter(player -> player.getLocation().distance(entity.getLocation()) <= config.getNearbyRadius())
+                    .collect(Collectors.toList());
             list.forEach(player -> manager.executeTriggers(player, boss, TriggerType.NEARBY_PLAYERS));
         }
     }
