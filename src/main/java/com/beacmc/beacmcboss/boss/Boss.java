@@ -70,6 +70,7 @@ public class Boss extends BossConfig {
 
             entity = (LivingEntity) world.spawnEntity(location, getEntityType());
             entity.setCustomNameVisible(true);
+            entity.setRemoveWhenFarAway(false);
             entity.setCustomName(Color.of(getDisplayName()));
             entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(getHealth());
             entity.setHealth(getHealth());

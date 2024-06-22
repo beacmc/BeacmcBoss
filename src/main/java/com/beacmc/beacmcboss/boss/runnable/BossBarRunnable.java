@@ -29,7 +29,7 @@ public class BossBarRunnable extends BukkitRunnable {
         this.players = new HashSet<>();
         this.boss = boss;
         this.config = BeacmcBoss.getBaseConfig();
-        this.bar = Bukkit.createBossBar(Color.of(PlaceholderAPI.setPlaceholders(null, config.getBossBarTitle())), config.getBarColor(), config.getBarStyle());
+        this.bar = Bukkit.createBossBar(Color.of(PlaceholderAPI.setPlaceholders(null, boss.getBarTitle())), boss.getBarColor(), boss.getBarStyle());
         Bukkit.getOnlinePlayers().forEach(bar::addPlayer);
         players.addAll(Bukkit.getOnlinePlayers());
         runTaskTimer(BeacmcBoss.getInstance(), 0L, 20L);
@@ -44,7 +44,7 @@ public class BossBarRunnable extends BukkitRunnable {
 
 
         final LivingEntity entity = boss.getLivingEntity();
-        final String title = Color.of(PlaceholderAPI.setPlaceholders(null, config.getBossBarTitle()));
+        final String title = Color.of(PlaceholderAPI.setPlaceholders(null, boss.getBarTitle()));
 
         if (entity == null) {
             this.clear();

@@ -6,10 +6,10 @@
 
     <groupId>com.beacmc</groupId>
     <artifactId>BeacmcBoss</artifactId>
-    <version>1.4</version>
+    <version>1.5</version>
     <packaging>jar</packaging>
 
-    <name></name>
+    <name>BeacmcBoss</name>
 
     <properties>
         <java.version>16</java.version>
