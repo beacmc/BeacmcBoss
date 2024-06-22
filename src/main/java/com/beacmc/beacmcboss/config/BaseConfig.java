@@ -10,14 +10,6 @@ public interface BaseConfig {
 
     int getNearbyRadius();
 
-    boolean isBossBarEnable();
-
-    String getBossBarTitle();
-
-    BarStyle getBarStyle();
-
-    BarColor getBarColor();
-
     int getTimerTime();
 
     String getPrefix();

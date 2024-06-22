@@ -3,6 +3,8 @@ package com.beacmc.beacmcboss.boss.config;
 import com.beacmc.beacmcboss.BeacmcBoss;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
@@ -65,6 +67,32 @@ public class BossConfig {
             logger.severe("An error occurred during boss spawn. Reason: invalid entity type");
         }
         return null;
+    }
+
+    public BarStyle getBarStyle() {
+        try {
+            return BarStyle.valueOf(config.getString("boss.boss-bar.style"));
+        } catch (IllegalArgumentException e) {
+            logger.severe("Unknown bar style");
+        }
+        return null;
+    }
+
+    public BarColor getBarColor() {
+        try {
+            return BarColor.valueOf(config.getString("boss.boss-bar.color"));
+        } catch (IllegalArgumentException e) {
+            logger.severe("Unknown bar color");
+        }
+        return null;
+    }
+
+    public String getBarTitle() {
+        return config.getString("boss.boss-bar.text");
+    }
+
+    public boolean isBarEnable() {
+        return config.getBoolean("boss.boss-bar.enable", false);
     }
 
     public YamlConfiguration getYamlConfiguration() {

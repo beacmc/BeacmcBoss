@@ -18,10 +18,6 @@ public class BaseConfigImpl implements BaseConfig {
     private final int nearbyExecuteTime;
     private final ConfigurationSection bossesSection;
     private final File localeFile;
-    private final boolean bossBarEnable;
-    private final String bossBarTitle;
-    private BarStyle barStyle;
-    private BarColor barColor;
 
     public BaseConfigImpl() {
         config = BeacmcBoss.getInstance().getConfig();
@@ -33,12 +29,6 @@ public class BaseConfigImpl implements BaseConfig {
         nearbyExecuteTime = settings.getInt("nearby-execute-time");
         bossesSection = config.getConfigurationSection("bosses");
         localeFile = new File(BeacmcBoss.getInstance().getDataFolder().getAbsoluteFile() + "/lang/" + settings.getString("locale-file"));
-        bossBarEnable = bossbarSection.getBoolean("enable");
-        bossBarTitle = bossbarSection.getString("text");
-        try {
-            barStyle = BarStyle.valueOf(bossbarSection.getString("bar-style"));
-            barColor = BarColor.valueOf(bossbarSection.getString("bar-color"));
-        } catch (IllegalArgumentException e) { }
     }
 
     public String getPrefix() {
@@ -49,21 +39,6 @@ public class BaseConfigImpl implements BaseConfig {
         return nearbyExecuteTime;
     }
 
-    public BarColor getBarColor() {
-        return barColor;
-    }
-
-    public BarStyle getBarStyle() {
-        return barStyle;
-    }
-
-    public boolean isBossBarEnable() {
-        return bossBarEnable;
-    }
-
-    public String getBossBarTitle() {
-        return bossBarTitle;
-    }
 
     public File getLocaleFile() {
         return localeFile;

@@ -3,12 +3,11 @@ boss:
   entity-type: ZOMBIE
   time-start-period: 5 # in minutes
   damage: 20.0
-  equip:
-    helmet: {}
-    chestplate: {}
-    leggings: {}
-    boots: {}
-    main-hand: {}
+  boss-bar:
+    enable: true
+    text: "%beacmcboss_example:display-name%"
+    style: SOLID
+    color: BLUE
   spawn-location:
     ==: org.bukkit.Location
     world: world

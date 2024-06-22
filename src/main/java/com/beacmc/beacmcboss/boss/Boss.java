@@ -73,7 +73,7 @@ public class Boss extends BossConfig {
             entity.setCustomName(Color.of(getDisplayName()));
             entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(getHealth());
             entity.setHealth(getHealth());
-            if (config.isBossBarEnable()) {
+            if (this.isBarEnable()) {
                 setBossBarRunnable(new BossBarRunnable(this));
             }
             setNearbyRunnable(new NearbyRunnable(this));
