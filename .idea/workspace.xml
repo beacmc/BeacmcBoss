@@ -9,16 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="bump to 1.4">
+    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="fix bug a despawn the boss and refactor code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/config/BossConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/config/BossConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossBarRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossBarRunnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/NearbyRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/NearbyRunnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/BaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/BaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfigImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfigImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/bosses/example.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bosses/example.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -380,7 +372,28 @@
       <option name="project" value="LOCAL" />
       <updated>1718727597711</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="added 1.21 support">
+      <created>1719081467413</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1719081467413</updated>
+    </task>
+    <task id="LOCAL-00043" summary="creating unique boss bars for each boss separately">
+      <created>1719081554840</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1719081554840</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fix bug a despawn the boss and refactor code">
+      <created>1719081594220</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1719081594220</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -395,9 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rename ConditionRequirement" />
-    <MESSAGE value="add Nearby add Timer runnable" />
-    <MESSAGE value="add BossCommand" />
     <MESSAGE value="add PlaceholderAPI Expansion" />
     <MESSAGE value="add boss listener" />
     <MESSAGE value="fix color error" />
@@ -420,6 +430,9 @@
     <MESSAGE value="load addons" />
     <MESSAGE value="refactor code" />
     <MESSAGE value="bump to 1.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="bump to 1.4" />
+    <MESSAGE value="added 1.21 support" />
+    <MESSAGE value="creating unique boss bars for each boss separately" />
+    <MESSAGE value="fix bug a despawn the boss and refactor code" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug a despawn the boss and refactor code" />
   </component>
 </project>

@@ -6,8 +6,8 @@ boss:
   boss-bar:
     enable: true
     text: "%beacmcboss_example:display-name%"
-    style: SOLID
-    color: BLUE
+    style: SOLID # https://helpch.at/docs/1.16.5/org/bukkit/boss/BarStyle
+    color: BLUE # https://helpch.at/docs/1.16.5/org/bukkit/boss/BarColor
   spawn-location:
     ==: org.bukkit.Location
     world: world
