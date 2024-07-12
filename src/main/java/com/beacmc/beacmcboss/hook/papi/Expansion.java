@@ -73,6 +73,8 @@ public class Expansion extends PlaceholderExpansion {
 
                 case "loc-world" -> location.getWorld().getName();
 
+                case "loc" -> location.getWorld().getName() + ";" + location.getBlockX() + ";" + location.getBlockY() + ";" + location.getBlockZ();
+
                 case "is-spawned" -> String.valueOf(boss.isSpawned());
 
                 case "last-killer" -> boss.getLastKiller();
