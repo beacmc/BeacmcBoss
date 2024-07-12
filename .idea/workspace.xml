@@ -9,14 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="refactor code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/ParticleAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="add placeholder %beacmcboss_&lt;id&gt;:loc%">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/trigger/TriggerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/trigger/TriggerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossBarRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossBarRunnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/ParticleAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/ParticleAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SummonAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/SummonAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -406,7 +405,35 @@
       <option name="project" value="LOCAL" />
       <updated>1719082265934</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="add triggers DAMAGE_BY_BOSS and DAMAGE_BY_PLAYER">
+      <created>1720773191028</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1720773191028</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fix 1.21">
+      <created>1720773245573</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1720773245573</updated>
+    </task>
+    <task id="LOCAL-00048" summary="add new action">
+      <created>1720773308474</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1720773308474</updated>
+    </task>
+    <task id="LOCAL-00049" summary="add placeholder %beacmcboss_&lt;id&gt;:loc%">
+      <created>1720773333102</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1720773333102</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -421,10 +448,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add PlaceholderAPI Expansion" />
-    <MESSAGE value="add boss listener" />
-    <MESSAGE value="fix color error" />
-    <MESSAGE value="design change" />
     <MESSAGE value="add multiply actions" />
     <MESSAGE value="add [equip] and [broadcast_sound] actions" />
     <MESSAGE value="add BossManager#exists method" />
@@ -446,6 +469,10 @@
     <MESSAGE value="creating unique boss bars for each boss separately" />
     <MESSAGE value="fix bug a despawn the boss and refactor code" />
     <MESSAGE value="refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
+    <MESSAGE value="add triggers DAMAGE_BY_BOSS and DAMAGE_BY_PLAYER" />
+    <MESSAGE value="fix 1.21" />
+    <MESSAGE value="add new action" />
+    <MESSAGE value="add placeholder %beacmcboss_&lt;id&gt;:loc%" />
+    <option name="LAST_COMMIT_MESSAGE" value="add placeholder %beacmcboss_&lt;id&gt;:loc%" />
   </component>
 </project>

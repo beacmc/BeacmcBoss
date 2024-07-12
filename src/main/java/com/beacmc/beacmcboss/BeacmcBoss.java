@@ -13,9 +13,11 @@ import com.beacmc.beacmcboss.config.impl.BaseConfigImpl;
 import com.beacmc.beacmcboss.config.impl.LanguageConfigImpl;
 import com.beacmc.beacmcboss.hook.papi.Expansion;
 import com.beacmc.beacmcboss.listener.BossListener;
+import com.beacmc.beacmcboss.util.Color;
 import com.beacmc.beacmcboss.util.action.*;
 import com.beacmc.beacmcboss.util.requirement.BooleanRequirement;
 import com.beacmc.beacmcboss.util.requirement.ConditionRequirement;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,6 +39,7 @@ public final class BeacmcBoss extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        long time = System.currentTimeMillis();
         instance = this;
         createConfigs();
         dataConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "data.yml"));
@@ -59,6 +62,18 @@ public final class BeacmcBoss extends JavaPlugin {
         expansion.register();
         this.getServer().getPluginManager().registerEvents(new BossListener(), this);
         this.getCommand("boss").setExecutor(new BossCommand());
+        long finalTime = System.currentTimeMillis() - time;
+        this.send("&7");
+        this.send("#ffbb00██████╗░███████╗░█████╗░░█████╗░███╗░░░███╗░█████╗░██████╗░░█████╗░░██████╗░██████╗");
+        this.send("#ffbb00██╔══██╗██╔════╝██╔══██╗██╔══██╗████╗░████║██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝");
+        this.send("#ffbb00██████╦╝█████╗░░███████║██║░░╚═╝██╔████╔██║██║░░╚═╝██████╦╝██║░░██║╚█████╗░╚█████╗░");
+        this.send("#ffbb00██╔══██╗██╔══╝░░██╔══██║██║░░██╗██║╚██╔╝██║██║░░██╗██╔══██╗██║░░██║░╚═══██╗░╚═══██╗");
+        this.send("#ffbb00██████╦╝███████╗██║░░██║╚█████╔╝██║░╚═╝░██║╚█████╔╝██████╦╝╚█████╔╝██████╔╝██████╔╝");
+        this.send("#ffbb00╚═════╝░╚══════╝╚═╝░░╚═╝░╚════╝░╚═╝░░░░░╚═╝░╚════╝░╚═════╝░░╚════╝░╚═════╝░╚═════╝░");
+        this.send("&7");
+        this.send("&7  &fLoaded actions: #FBA408" + actionManager.getRegisterActions().size() + "&7  &7|  &fLoaded requirements: #FBA408" + requirementManager.getRegisterRequirements().size() + "&7  &7|  &fLoaded bosses: #FBA408" + bossManager.getRegisterBosses().values().size());
+        this.send("&7  &fPlugin launched in #FBA408" + finalTime + " &fms");
+        this.send("&7");
     }
 
     @Override
@@ -117,5 +132,9 @@ public final class BeacmcBoss extends JavaPlugin {
 
         this.saveResource("lang/ru.yml", false);
         this.saveResource("lang/en.yml", false);
+    }
+
+    private void send(String message) {
+        Bukkit.getConsoleSender().sendMessage(Color.of(message));
     }
 }

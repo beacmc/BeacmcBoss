@@ -3,6 +3,7 @@ package com.beacmc.beacmcboss.util.action;
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.action.Action;
 import com.beacmc.beacmcboss.boss.Boss;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -30,14 +31,14 @@ public class SummonAction extends Action {
     }
 
     @Override
-    public void execute(Player player, Boss boss, String param) {
+    public void execute(Player player, Boss boss, String p) {
         final Logger logger = BeacmcBoss.getInstance().getLogger();
+        final String param = PlaceholderAPI.setPlaceholders(player, p);
 
         Matcher locationMatcher = LOCATION_PATTERN.matcher(param);
         Matcher entityMatcher = ENTITY_PATTERN.matcher(param);
-
         if (!locationMatcher.find() || !entityMatcher.find()) {
-            logger.severe("location or creature not found ");
+            logger.severe("location or creature not found");
             return;
         }
 

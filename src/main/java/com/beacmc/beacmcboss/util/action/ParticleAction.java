@@ -3,6 +3,7 @@ package com.beacmc.beacmcboss.util.action;
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.action.Action;
 import com.beacmc.beacmcboss.boss.Boss;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -31,20 +32,23 @@ public class ParticleAction extends Action {
     }
 
     @Override
-    public void execute(Player player, Boss boss, String param) {
+    public void execute(Player player, Boss boss, String p) {
         final Logger logger = BeacmcBoss.getInstance().getLogger();
-        final Matcher locationMatcher = LOCATION_PATTERN.matcher(param);
-        final Matcher particleMatcher = PARTICLE_PATTERN.matcher(param);
+        final String param = PlaceholderAPI.setPlaceholders(player, p);
+
+        Matcher locationMatcher = LOCATION_PATTERN.matcher(param);
+        Matcher particleMatcher = PARTICLE_PATTERN.matcher(param);
 
         if (!locationMatcher.find() || !particleMatcher.find()) {
-            logger.severe("location or particle not found ");
+            logger.severe("location or particle not found");
             return;
         }
 
-        World world = Bukkit.getWorld(locationMatcher.group(1));
+        String worldName = locationMatcher.group(1);
+        World world = Bukkit.getWorld(worldName);
 
         if (world == null) {
-            logger.severe("world cannot be found");
+            logger.severe("world cannot be found: " + worldName);
             return;
         }
 
@@ -68,13 +72,21 @@ public class ParticleAction extends Action {
         }
 
         Location location = new Location(world, x, y, z);
-        location.getWorld().spawnParticle(getParticleForName(particleMatcher.group(1)), location, count, offsetX, offsetY, offsetZ, speed);
+        Particle particleType = getParticleForName(particleMatcher.group(1));
+
+        if (particleType == null) {
+            logger.severe("Invalid particle type: " + particleMatcher.group(1));
+            return;
+        }
+
+        location.getWorld().spawnParticle(particleType, location, count, offsetX, offsetY, offsetZ, speed);
     }
 
     private Particle getParticleForName(String name) {
         try {
             return Particle.valueOf(name.toUpperCase());
-        } catch (IllegalArgumentException e) { }
-        return Particle.EXPLOSION_NORMAL;
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 }
