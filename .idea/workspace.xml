@@ -9,9 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="fix bug a despawn the boss and refactor code">
+    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="refactor code">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/ParticleAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bosses/example.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bosses/example.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/trigger/TriggerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/trigger/TriggerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossBarRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/runnable/BossBarRunnable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +48,11 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sergey/IdeaProjects/BeacmcDiscord&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sergey/IdeaProjects/ExtraPotionStaker&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.25839552&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.25839552&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
 }</component>
   <component name="RunManager">
@@ -393,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1719081594220</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="refactor code">
+      <created>1719082265934</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1719082265934</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -428,11 +441,11 @@
     <MESSAGE value="remove maven plugin compiler" />
     <MESSAGE value="add AddonManager" />
     <MESSAGE value="load addons" />
-    <MESSAGE value="refactor code" />
     <MESSAGE value="bump to 1.4" />
     <MESSAGE value="added 1.21 support" />
     <MESSAGE value="creating unique boss bars for each boss separately" />
     <MESSAGE value="fix bug a despawn the boss and refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug a despawn the boss and refactor code" />
+    <MESSAGE value="refactor code" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
   </component>
 </project>

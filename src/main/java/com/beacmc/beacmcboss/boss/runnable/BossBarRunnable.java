@@ -73,7 +73,10 @@ public class BossBarRunnable extends BukkitRunnable {
     }
 
     public boolean isPlayerInBossBar(Player player) {
-        return players.stream().filter(p -> p == player).findFirst().orElse(null) != null;
+        return players.stream()
+                .filter(p -> p == player)
+                .findFirst()
+                .orElse(null) != null;
     }
 
     public BossBar getBossBar() {
