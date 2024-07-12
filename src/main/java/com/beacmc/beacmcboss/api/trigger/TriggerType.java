@@ -5,5 +5,7 @@ public enum TriggerType {
     BOSS_SPAWN,
     BOSS_DEATH,
     TIMER,
-    NEARBY_PLAYERS
+    NEARBY_PLAYERS,
+    DAMAGE_BY_BOSS,
+    DAMAGE_BY_PLAYER
 }

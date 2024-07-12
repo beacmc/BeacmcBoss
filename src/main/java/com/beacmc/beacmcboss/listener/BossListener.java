@@ -74,4 +74,22 @@ public class BossListener implements Listener {
             event.setDamage(boss.getCustomDamage());
         }
     }
+
+    @EventHandler
+    public void damageTriggers(EntityDamageByEntityEvent event) {
+
+        if (event.getDamager() instanceof LivingEntity entity && event.getEntity() instanceof Player player) {
+            final Boss boss = bossManager.getBossByEntity(entity);
+            if (bossManager.exists(boss)) {
+                triggerManager.executeTriggers(player, boss, TriggerType.DAMAGE_BY_BOSS);
+            }
+        }
+
+        else if (event.getDamager() instanceof Player player && event.getEntity() instanceof LivingEntity entity) {
+            final Boss boss = bossManager.getBossByEntity(entity);
+            if (bossManager.exists(boss)) {
+                triggerManager.executeTriggers(player, boss, TriggerType.DAMAGE_BY_PLAYER);
+            }
+        }
+    }
 }
