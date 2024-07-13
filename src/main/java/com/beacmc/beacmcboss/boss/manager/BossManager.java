@@ -59,13 +59,16 @@ public class BossManager {
 
     public void unregisterAll() {
         registerBosses.values().forEach(boss -> {
-            if(boss.isSpawned())
+            if(boss.isSpawned()) {
                 boss.despawn(null);
+            }
+            boss.getTimerRunnable().cancel();
+            boss.getBossStartRunnable().cancel();
         });
         registerBosses.clear();
     }
 
-    private void loadBosses() {
+    public void loadBosses() {
         ConfigurationSection section = plugin.getConfig().getConfigurationSection("bosses");
         section.getKeys(false).forEach(key -> {
             File file = new File(plugin.getDataFolder(), "bosses/" + section.getString(key));

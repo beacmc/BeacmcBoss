@@ -18,12 +18,14 @@ public class LanguageConfigImpl implements LanguageConfig {
     private final String bossNotFoundMessage;
     private final String noArgsMessage;
     private final String bossTpMessage;
+    private final String reloadMessage;
 
     public LanguageConfigImpl() {
         config = BeacmcBoss.getLocaleConfig();
         ConfigurationSection messages = config.getConfigurationSection("messages");
         noPermissionMessage = messages.getString("no-permission");
         bossSpawnedMessage = messages.getString("boss-spawned");
+        reloadMessage = messages.getString("reload");
         bossAlreadySpawnedMessage = messages.getString("boss-already-spawned");
         bossNotSpawnedMessage = messages.getString("boss-not-spawned");
         bossStoppedMessage = messages.getString("boss-stopped");
@@ -38,6 +40,11 @@ public class LanguageConfigImpl implements LanguageConfig {
 
     public String getNoArgsMessage() {
         return noArgsMessage;
+    }
+
+    @Override
+    public String getReloadMessage() {
+        return reloadMessage;
     }
 
     public String getBossNotFoundMessage() {

@@ -4,7 +4,7 @@ settings:
   prefix: "#FFE259&lʙ#FFDC58&lᴇ#FFD657&lᴀ#FFD057&lᴄ#FFCA56&lᴍ#FFC555&lᴄ#FFBF54&lʙ#FFB953&lᴏ#FFB353&lꜱ#FFAD52&lꜱ #FFA751&l▸&7"
 
   # directory: lang
-  locale-file: "ru.yml"
+  locale-file: "en.yml"
 
   # used in TIMER trigger
   #
@@ -16,18 +16,6 @@ settings:
 
   # The NEARBY_PLAYERS trigger will execute every 30 seconds.
   nearby-execute-time: 30
-
-  boss-bar:
-    enable: true
-
-    # PlaceholderAPI support
-    text: "%beacmcboss_example:display-name%"
-
-    # https://helpch.at/docs/1.16.5/org/bukkit/boss/BarStyle
-    bar-style: SOLID
-
-    # https://helpch.at/docs/1.16.5/org/bukkit/boss/BarColor
-    bar-color: BLUE
 
 # directory: bosses
 bosses:

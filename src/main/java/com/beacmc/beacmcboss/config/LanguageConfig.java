@@ -4,6 +4,8 @@ public interface LanguageConfig {
 
     String getNoPermissionMessage();
 
+    String getReloadMessage();
+
     String getBossAlreadySpawnedMessage();
 
     String getBossNotSpawnedMessage();

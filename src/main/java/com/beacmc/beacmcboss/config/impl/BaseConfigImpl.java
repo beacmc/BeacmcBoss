@@ -22,7 +22,6 @@ public class BaseConfigImpl implements BaseConfig {
     public BaseConfigImpl() {
         config = BeacmcBoss.getInstance().getConfig();
         ConfigurationSection settings = config.getConfigurationSection("settings");
-        ConfigurationSection bossbarSection = settings.getConfigurationSection("boss-bar");
         prefix = settings.getString("prefix");
         timerTime = settings.getInt("timer-time");
         nearbyRadius = settings.getInt("nearby-radius");

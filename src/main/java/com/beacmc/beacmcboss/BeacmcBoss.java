@@ -2,7 +2,6 @@ package com.beacmc.beacmcboss;
 
 import com.beacmc.beacmcboss.api.action.ActionManager;
 import com.beacmc.beacmcboss.api.addon.AddonManager;
-import com.beacmc.beacmcboss.api.addon.BossAddon;
 import com.beacmc.beacmcboss.api.requirement.RequirementManager;
 import com.beacmc.beacmcboss.api.trigger.TriggerManager;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
@@ -132,6 +131,18 @@ public final class BeacmcBoss extends JavaPlugin {
 
         this.saveResource("lang/ru.yml", false);
         this.saveResource("lang/en.yml", false);
+    }
+
+    public void reload() {
+        this.createConfigs();
+        this.reloadConfig();
+        baseConfig = new BaseConfigImpl();
+        localeConfig = YamlConfiguration.loadConfiguration(baseConfig.getLocaleFile());
+        languageConfig = new LanguageConfigImpl();
+        addonManager.unloadAddons();
+        addonManager.loadAddons();
+        bossManager.unregisterAll();
+        bossManager.loadBosses();
     }
 
     private void send(String message) {

@@ -7,3 +7,4 @@ messages:
   boss-not-found: "{PREFIX} Босс не найден"
   no-args: "{PREFIX} Недостаточно аргументов"
   boss-tp: "{PREFIX} Телепортация к боссу"
+  reload: "{PREFIX} Конфигурации, боссы и аддоны перезапущены"

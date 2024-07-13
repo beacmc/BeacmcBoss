@@ -35,11 +35,11 @@ public class BossListener implements Listener {
         final Boss boss = bossManager.getBossByEntity(entity);
         final Player killer = entity.getKiller();
 
-        if(bossManager.exists(boss)) {
+        if (bossManager.exists(boss)) {
             BossDeathEvent bossDeathEvent = new BossDeathEvent(boss, killer);
             BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(bossDeathEvent);
 
-            if(bossDeathEvent.isCancelled()) {
+            if (bossDeathEvent.isCancelled()) {
                 event.setCancelled(true);
                 return;
             }
@@ -64,13 +64,13 @@ public class BossListener implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
-        if(!(event.getDamager() instanceof LivingEntity))
+        if (!(event.getDamager() instanceof LivingEntity))
             return;
 
         final LivingEntity entity = (LivingEntity) event.getDamager();
         final Boss boss = bossManager.getBossByEntity(entity);
 
-        if(bossManager.exists(boss)) {
+        if (bossManager.exists(boss)) {
             event.setDamage(boss.getCustomDamage());
         }
     }
