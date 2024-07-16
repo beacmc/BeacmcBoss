@@ -2,6 +2,8 @@ package com.beacmc.beacmcboss.listener;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.event.BossDeathEvent;
+import com.beacmc.beacmcboss.api.event.DamageBossByPlayerEvent;
+import com.beacmc.beacmcboss.api.event.DamagePlayerByBossEvent;
 import com.beacmc.beacmcboss.api.trigger.TriggerManager;
 import com.beacmc.beacmcboss.api.trigger.TriggerType;
 import com.beacmc.beacmcboss.boss.Boss;
@@ -14,6 +16,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.plugin.PluginManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,17 +80,26 @@ public class BossListener implements Listener {
 
     @EventHandler
     public void damageTriggers(EntityDamageByEntityEvent event) {
+        final PluginManager manager = BeacmcBoss.getInstance().getServer().getPluginManager();
 
         if (event.getDamager() instanceof LivingEntity entity && event.getEntity() instanceof Player player) {
             final Boss boss = bossManager.getBossByEntity(entity);
+
             if (bossManager.exists(boss)) {
+                DamagePlayerByBossEvent bossDeathEvent = new DamagePlayerByBossEvent(boss, player);
+                manager.callEvent(bossDeathEvent);
+
                 triggerManager.executeTriggers(player, boss, TriggerType.DAMAGE_BY_BOSS);
             }
         }
 
         else if (event.getDamager() instanceof Player player && event.getEntity() instanceof LivingEntity entity) {
             final Boss boss = bossManager.getBossByEntity(entity);
+
             if (bossManager.exists(boss)) {
+                DamageBossByPlayerEvent bossDeathEvent = new DamageBossByPlayerEvent(boss, player);
+                manager.callEvent(bossDeathEvent);
+
                 triggerManager.executeTriggers(player, boss, TriggerType.DAMAGE_BY_PLAYER);
             }
         }
