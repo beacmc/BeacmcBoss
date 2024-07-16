@@ -63,7 +63,7 @@ public class Expansion extends PlaceholderExpansion {
 
                 case "lifetime" -> String.valueOf(boss.getLifetime());
 
-                case "health" -> String.valueOf(entity.getHealth());
+                case "health" -> String.valueOf((int) entity.getHealth());
 
                 case "loc-x" -> String.valueOf(location.getBlockX());
 
