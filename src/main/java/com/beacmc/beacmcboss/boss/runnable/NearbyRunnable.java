@@ -33,6 +33,7 @@ public class NearbyRunnable extends BukkitRunnable {
         LivingEntity entity = boss.getLivingEntity();
         if (entity != null) {
             Collection<Player> list = Bukkit.getOnlinePlayers().stream()
+                    .filter(player -> player.getWorld().equals(entity.getWorld()))
                     .filter(player -> player.getLocation().distance(entity.getLocation()) <= config.getNearbyRadius())
                     .collect(Collectors.toList());
             list.forEach(player -> manager.executeTriggers(player, boss, TriggerType.NEARBY_PLAYERS));
