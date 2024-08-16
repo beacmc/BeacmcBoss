@@ -82,7 +82,10 @@ public class BossListener implements Listener {
     public void damageTriggers(EntityDamageByEntityEvent event) {
         final PluginManager manager = BeacmcBoss.getInstance().getServer().getPluginManager();
 
-        if (event.getDamager() instanceof LivingEntity entity && event.getEntity() instanceof Player player) {
+
+        if (event.getDamager() instanceof LivingEntity && event.getEntity() instanceof Player) {
+            final Player player = (Player) event.getEntity();
+            final LivingEntity entity = (LivingEntity) event.getDamager();
             final Boss boss = bossManager.getBossByEntity(entity);
 
             if (bossManager.exists(boss)) {
@@ -93,7 +96,9 @@ public class BossListener implements Listener {
             }
         }
 
-        else if (event.getDamager() instanceof Player player && event.getEntity() instanceof LivingEntity entity) {
+        else if (event.getDamager() instanceof Player && event.getEntity() instanceof LivingEntity) {
+            final Player player = (Player) event.getDamager();
+            final LivingEntity entity = (LivingEntity) event.getEntity();
             final Boss boss = bossManager.getBossByEntity(entity);
 
             if (bossManager.exists(boss)) {

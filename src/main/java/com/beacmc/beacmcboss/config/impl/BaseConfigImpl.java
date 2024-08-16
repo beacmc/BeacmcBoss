@@ -38,7 +38,6 @@ public class BaseConfigImpl implements BaseConfig {
         return nearbyExecuteTime;
     }
 
-
     public File getLocaleFile() {
         return localeFile;
     }

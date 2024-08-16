@@ -35,17 +35,40 @@ public class ConditionRequirement extends Requirement {
         final String operator = matcher.group(2);
         final String second = matcher.group(3).trim();
 
+        boolean condition = false;
+
         try {
-            return switch (operator) {
-                case "==" -> first.equals(second);
-                case "!=" -> !first.equals(second);
-                case "<" -> Integer.parseInt(first) < Integer.parseInt(second);
-                case ">" -> Integer.parseInt(first) > Integer.parseInt(second);
-                case "<=" -> Integer.parseInt(first) <= Integer.parseInt(second);
-                case ">=" -> Integer.parseInt(first) >= Integer.parseInt(second);
-                default -> false;
+            switch (operator) {
+                case "==" : {
+                    condition = first.equals(second);
+                    break;
+                }
+                case "!=" : {
+                    condition = !first.equals(second);
+                    break;
+                }
+                case "<" : {
+                    condition = Integer.parseInt(first) < Integer.parseInt(second);
+                    break;
+                }
+                case ">" : {
+                    condition = Integer.parseInt(first) > Integer.parseInt(second);
+                    break;
+                }
+                case "<=" : {
+                    condition = Integer.parseInt(first) <= Integer.parseInt(second);
+                    break;
+                }
+                case ">=" : {
+                    condition = Integer.parseInt(first) >= Integer.parseInt(second);
+                    break;
+                }
+                default : {
+                    condition = false;
+                    break;
+                }
             };
         } catch (NumberFormatException e) { }
-        return false;
+        return condition;
     }
 }
