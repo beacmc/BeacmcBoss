@@ -19,4 +19,14 @@ public interface LanguageConfig {
     String getNoArgsMessage();
 
     String getBossTpMessage();
+
+    String getItemAlreadyAddedMessage();
+
+    String getItemNotFoundMessage();
+
+    String getItemNullMessage();
+
+    String getItemRemovedMessage();
+
+    String getItemAddedMessage();
 }

@@ -9,14 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/event/DamageBossByPlayerEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/event/DamagePlayerByBossEvent.java" afterDir="false" />
+    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="remove plugin compiler">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/command/subcommand/BossAddItemSubCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/command/subcommand/BossRemoveItemSubCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/DropItemAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/item/ItemManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/items.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BroadcastAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BroadcastAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/addon/AddonManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/addon/AddonManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/addon/BossAddon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/addon/BossAddon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/command/BossCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/command/BossCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/command/subcommand/BossTpSubCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/command/subcommand/BossTpSubCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/LanguageConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/LanguageConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/LanguageConfigImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/LanguageConfigImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BossEquipAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/util/action/BossEquipAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lang/en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang/en.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lang/ru.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang/ru.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +38,7 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Kotlin Class" />
         <option value="Class" />
       </list>
     </option>
@@ -48,8 +59,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sergey/IdeaProjects/ExtraPotionStaker&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sergey/IdeaProjects/BeacmcBoss&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.25839552&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
@@ -90,62 +101,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715440771980</updated>
-    </task>
-    <task id="LOCAL-00005" summary="add events">
-      <created>1715883079096</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1715883079096</updated>
-    </task>
-    <task id="LOCAL-00006" summary="add more actions">
-      <created>1716276794089</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1716276794089</updated>
-    </task>
-    <task id="LOCAL-00007" summary="refactor example boss">
-      <created>1716276820716</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1716276820716</updated>
-    </task>
-    <task id="LOCAL-00008" summary="refactor Color util">
-      <created>1716276836487</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1716276836487</updated>
-    </task>
-    <task id="LOCAL-00009" summary="add BossManager">
-      <created>1716276849319</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1716276849319</updated>
-    </task>
-    <task id="LOCAL-00010" summary="refactor code">
-      <created>1716276859220</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1716276859220</updated>
-    </task>
-    <task id="LOCAL-00011" summary="add configuration interface">
-      <created>1716638570612</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1716638570612</updated>
-    </task>
-    <task id="LOCAL-00012" summary="add broadcast action">
-      <created>1716638582198</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1716638582198</updated>
     </task>
     <task id="LOCAL-00013" summary="add Message util">
       <created>1716638600600</created>
@@ -434,7 +389,63 @@
       <option name="project" value="LOCAL" />
       <updated>1720875542045</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="fix sout in 1.21">
+      <created>1721145911578</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1721145911578</updated>
+    </task>
+    <task id="LOCAL-00055" summary="add events">
+      <created>1721145942507</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1721145942507</updated>
+    </task>
+    <task id="LOCAL-00056" summary="cast double to int in placeholder">
+      <created>1721145961156</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1721145961156</updated>
+    </task>
+    <task id="LOCAL-00057" summary="remove plugin compiler">
+      <created>1721146015031</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1721146015031</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Console spam fix">
+      <created>1723790521204</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1723790521204</updated>
+    </task>
+    <task id="LOCAL-00059" summary="add BroadcastTitleAction">
+      <created>1723790547941</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1723790547941</updated>
+    </task>
+    <task id="LOCAL-00060" summary="refactor code">
+      <created>1723790572254</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1723790572254</updated>
+    </task>
+    <task id="LOCAL-00061" summary="bump to 1.6.3">
+      <created>1723790595647</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1723790595647</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -449,13 +460,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="lifetime function" />
-    <MESSAGE value="adding PlaceholderAPI to the list of dependencies" />
-    <MESSAGE value="adding the ability to send a message to the console if a player is not found" />
-    <MESSAGE value="Bug fix when a boss died for personal reasons, it was a bug on the plugin side" />
-    <MESSAGE value="fixed no-args message" />
-    <MESSAGE value="migration to version 1.2 and multiple code refactoring" />
-    <MESSAGE value="add BossStartAction and BossStopAction" />
     <MESSAGE value="add BossBar to bosses" />
     <MESSAGE value="added debug mode in actions" />
     <MESSAGE value="add boss addon" />
@@ -470,10 +474,17 @@
     <MESSAGE value="fix 1.21" />
     <MESSAGE value="add new action" />
     <MESSAGE value="add placeholder %beacmcboss_&lt;id&gt;:loc%" />
-    <MESSAGE value="refactor code" />
     <MESSAGE value="bump to 1.6" />
     <MESSAGE value="refactor command system and add reload subcommand" />
     <MESSAGE value="bump to 1.6.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="bump to 1.6.1" />
+    <MESSAGE value="fix sout in 1.21" />
+    <MESSAGE value="add events" />
+    <MESSAGE value="cast double to int in placeholder" />
+    <MESSAGE value="remove plugin compiler" />
+    <MESSAGE value="Console spam fix" />
+    <MESSAGE value="add BroadcastTitleAction" />
+    <MESSAGE value="refactor code" />
+    <MESSAGE value="bump to 1.6.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="bump to 1.6.3" />
   </component>
 </project>

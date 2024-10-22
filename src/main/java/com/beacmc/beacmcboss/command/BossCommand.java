@@ -5,10 +5,7 @@ import com.beacmc.beacmcboss.api.subcommand.SubCommandManager;
 import com.beacmc.beacmcboss.boss.Boss;
 import com.beacmc.beacmcboss.boss.config.BossConfig;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
-import com.beacmc.beacmcboss.command.subcommand.BossReloadSubCommand;
-import com.beacmc.beacmcboss.command.subcommand.BossStartSubCommand;
-import com.beacmc.beacmcboss.command.subcommand.BossStopSubCommand;
-import com.beacmc.beacmcboss.command.subcommand.BossTpSubCommand;
+import com.beacmc.beacmcboss.command.subcommand.*;
 import com.beacmc.beacmcboss.config.LanguageConfig;
 import com.beacmc.beacmcboss.util.Message;
 import org.bukkit.command.Command;
@@ -25,7 +22,7 @@ public class BossCommand implements CommandExecutor {
 
     public BossCommand() {
         manager = new SubCommandManager();
-        manager.registerSubCommands(new BossReloadSubCommand(), new BossStartSubCommand(), new BossStopSubCommand(), new BossTpSubCommand());
+        manager.registerSubCommands(new BossReloadSubCommand(), new BossStartSubCommand(), new BossStopSubCommand(), new BossTpSubCommand(), new BossAddItemSubCommand(), new BossRemoveItemSubCommand());
     }
 
     @Override

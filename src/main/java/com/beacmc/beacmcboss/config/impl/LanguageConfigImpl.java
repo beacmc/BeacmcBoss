@@ -19,6 +19,11 @@ public class LanguageConfigImpl implements LanguageConfig {
     private final String noArgsMessage;
     private final String bossTpMessage;
     private final String reloadMessage;
+    private final String itemNullMessage;
+    private final String itemNotFoundMessage;
+    private final String itemAddedMessage;
+    private final String itemAlreadyAddedMessage;
+    private final String itemRemovedMessage;
 
     public LanguageConfigImpl() {
         config = BeacmcBoss.getLocaleConfig();
@@ -32,17 +37,41 @@ public class LanguageConfigImpl implements LanguageConfig {
         bossNotFoundMessage = messages.getString("boss-not-found");
         noArgsMessage = messages.getString("no-args");
         bossTpMessage = messages.getString("boss-tp");
+        itemNullMessage = messages.getString("item-null");
+        itemAlreadyAddedMessage = messages.getString("item-already-added");
+        itemAddedMessage = messages.getString("item-added");
+        itemNotFoundMessage = messages.getString("item-not-found");
+        itemRemovedMessage = messages.getString("item-removed");
     }
 
     public String getBossTpMessage() {
         return bossTpMessage;
     }
 
+    public String getItemAddedMessage() {
+        return itemAddedMessage;
+    }
+
+    public String getItemAlreadyAddedMessage() {
+        return itemAlreadyAddedMessage;
+    }
+
+    public String getItemNotFoundMessage() {
+        return itemNotFoundMessage;
+    }
+
+    public String getItemNullMessage() {
+        return itemNullMessage;
+    }
+
+    public String getItemRemovedMessage() {
+        return itemRemovedMessage;
+    }
+
     public String getNoArgsMessage() {
         return noArgsMessage;
     }
 
-    @Override
     public String getReloadMessage() {
         return reloadMessage;
     }

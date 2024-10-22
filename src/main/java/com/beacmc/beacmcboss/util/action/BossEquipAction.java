@@ -3,6 +3,7 @@ package com.beacmc.beacmcboss.util.action;
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.action.Action;
 import com.beacmc.beacmcboss.boss.Boss;
+import com.beacmc.beacmcboss.util.item.ItemManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EntityEquipment;
@@ -15,13 +16,14 @@ import java.util.regex.Pattern;
 public class BossEquipAction extends Action {
 
     private final Pattern TYPE_PATTERN = Pattern.compile("\\[type=(\\w+)]");
-    private final Pattern MATERIAL_PATTERN = Pattern.compile("\\[material=(\\w+)]");
+    private final Pattern ITEM_PATTERN = Pattern.compile("\\[item=(\\w+)]");
+    private final ItemManager manager;
     private final Logger logger;
 
     public BossEquipAction() {
         this.logger = BeacmcBoss.getInstance().getLogger();
+        this.manager = BeacmcBoss.getItemManager();
     }
-
 
     @Override
     public String getName() {
@@ -36,18 +38,21 @@ public class BossEquipAction extends Action {
     @Override
     public void execute(Player player, Boss boss, String param) {
         final EntityEquipment equip = boss.getLivingEntity().getEquipment();
-        Matcher typeMatcher = TYPE_PATTERN.matcher(param);
-        Matcher materialMatcher = MATERIAL_PATTERN.matcher(param);
+        final Matcher typeMatcher = TYPE_PATTERN.matcher(param);
+        final Matcher itemMatcher = ITEM_PATTERN.matcher(param);
 
-        if (!typeMatcher.find() || !materialMatcher.find()) {
+        if (!typeMatcher.find() || !itemMatcher.find()) {
             logger.warning("Armor type or material unknown.");
             logger.warning("- action is stopped by force.");
             return;
         }
 
         try {
-            Material material = Material.valueOf(materialMatcher.group(1).toUpperCase());
-            ItemStack stack = new ItemStack(material);
+            ItemStack stack = manager.getItemByName(itemMatcher.group(1));
+            if (stack == null) {
+                logger.warning("Item not found");
+                return;
+            }
             String type = typeMatcher.group(1).toUpperCase();
             switch (type) {
                 case "HELMET": {
@@ -68,6 +73,10 @@ public class BossEquipAction extends Action {
                 }
                 case "HAND": {
                     equip.setItemInMainHand(stack);
+                    break;
+                }
+                case "OFFHAND": {
+                    equip.setItemInOffHand(stack);
                     break;
                 }
             }

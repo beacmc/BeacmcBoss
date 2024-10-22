@@ -31,10 +31,12 @@ public class BossTpSubCommand extends SubCommand {
             return;
         }
 
-        if(!(sender instanceof Player player)) {
+        if(!(sender instanceof Player)) {
             sender.sendMessage("only player");
             return;
         }
+
+        Player player = (Player) sender;
 
         Boss boss = bossManager.getBossByName(args[1]);
 

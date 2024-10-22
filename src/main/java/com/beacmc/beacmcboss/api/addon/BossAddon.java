@@ -107,11 +107,9 @@ public abstract class BossAddon {
         if (this.enabled != enabled) {
             this.enabled = enabled;
 
-            if (this.enabled)
-                onEnable();
+            if (this.enabled) onEnable();
 
-            else
-                onDisable();
+            else onDisable();
         }
     }
 
