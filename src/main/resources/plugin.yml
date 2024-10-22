@@ -3,7 +3,9 @@ version: '${project.version}'
 main: com.beacmc.beacmcboss.BeacmcBoss
 api-version: '1.16'
 load: POSTWORLD
-
+softdepend:
+  - Multiverse-Core
+  - MultiWorld
 depend:
   - PlaceholderAPI
 commands:
