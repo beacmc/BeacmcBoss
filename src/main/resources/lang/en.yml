@@ -8,3 +8,8 @@ messages:
   no-args: "{PREFIX} Not enough arguments"
   boss-tp: "{PREFIX} Teleport to the boss"
   reload: "{PREFIX} Configurations, bosses and addons have been relaunched"
+  item-null: "{PREFIX} Item in hand not found"
+  item-already-added: "{PREFIX} An item with the same name already exists"
+  item-added: "{PREFIX} Item added successfully"
+  item-not-found: "{PREFIX} Item not found"
+  item-removed: "{PREFIX} Item removed"

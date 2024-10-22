@@ -14,11 +14,13 @@ import com.beacmc.beacmcboss.hook.papi.Expansion;
 import com.beacmc.beacmcboss.listener.BossListener;
 import com.beacmc.beacmcboss.util.Color;
 import com.beacmc.beacmcboss.util.action.*;
+import com.beacmc.beacmcboss.util.item.ItemManager;
 import com.beacmc.beacmcboss.util.requirement.BooleanRequirement;
 import com.beacmc.beacmcboss.util.requirement.ConditionRequirement;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 
@@ -35,6 +37,8 @@ public final class BeacmcBoss extends JavaPlugin {
     private static Expansion expansion;
     private static AddonManager addonManager;
     private static YamlConfiguration localeConfig;
+    private static YamlConfiguration itemsConfig;
+    private static ItemManager itemManager;
 
     @Override
     public void onEnable() {
@@ -43,6 +47,7 @@ public final class BeacmcBoss extends JavaPlugin {
         createConfigs();
         dataConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "data.yml"));
         baseConfig = new BaseConfigImpl();
+        itemsConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "items.yml"));
         localeConfig = YamlConfiguration.loadConfiguration(baseConfig.getLocaleFile());
         languageConfig = new LanguageConfigImpl();
 
@@ -51,7 +56,9 @@ public final class BeacmcBoss extends JavaPlugin {
         triggerManager = new TriggerManager();
         bossManager = new BossManager();
 
-        actionManager.registerActions(new ParticleAction(), new BossStartAction(), new BossStopAction(), new BossEquipAction(), new BroadcastSoundAction(), new DamageAction(), new FireAction(), new SummonAction(), new ActionbarAction(), new TitleAction(), new BroadcastAction(), new SoundAction(), new ConsoleAction(), new MessageAction());
+        itemManager = new ItemManager();
+
+        actionManager.registerActions(new ParticleAction(), new BossStartAction(), new BossStopAction(), new BossEquipAction(), new BroadcastSoundAction(), new DamageAction(), new FireAction(), new SummonAction(), new ActionbarAction(), new TitleAction(), new BroadcastAction(), new SoundAction(), new ConsoleAction(), new MessageAction(), new DropItemAction());
         requirementManager.registerRequirements(new BooleanRequirement(), new ConditionRequirement());
 
         addonManager = new AddonManager();
@@ -95,6 +102,10 @@ public final class BeacmcBoss extends JavaPlugin {
         return triggerManager;
     }
 
+    public static ItemManager getItemManager() {
+        return itemManager;
+    }
+
     public static BossManager getBossManager() {
         return bossManager;
     }
@@ -120,9 +131,14 @@ public final class BeacmcBoss extends JavaPlugin {
         return dataConfig;
     }
 
+    public static YamlConfiguration getItemsConfig() {
+        return itemsConfig;
+    }
+
     private void createConfigs() {
         saveDefaultConfig();
         saveResource("data.yml", false);
+        saveResource("items.yml", false);
         new File(this.getDataFolder().getAbsoluteFile() + "/lang").mkdirs();
         File file = new File(this.getDataFolder().getAbsoluteFile() + "/bosses");
         if(file.mkdirs()) {

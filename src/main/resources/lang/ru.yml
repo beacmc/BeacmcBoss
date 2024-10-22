@@ -8,3 +8,8 @@ messages:
   no-args: "{PREFIX} Недостаточно аргументов"
   boss-tp: "{PREFIX} Телепортация к боссу"
   reload: "{PREFIX} Конфигурации, боссы и аддоны перезапущены"
+  item-null: "{PREFIX} Предмет в руке не найден"
+  item-already-added: "{PREFIX} Предмет с таким именем уже существует"
+  item-added: "{PREFIX} Предмет успешно добавлен"
+  item-not-found: "{PREFIX} Предмет не найден"
+  item-removed: "{PREFIX} Предмет удалён"
