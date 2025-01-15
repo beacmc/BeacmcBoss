@@ -95,6 +95,19 @@ public class BossConfig {
         return config.getBoolean("boss.boss-bar.enable", false);
     }
 
+    public boolean isRandomSpawnLocationEnabled() {
+        return config.getBoolean("boss.random-spawn-location.enable", false);
+    }
+
+    public Integer getRandomSpawnLocationRadius() {
+        return config.getInt("boss.random-spawn-location.radius", 250);
+    }
+
+    public World getRandomSpawnLocationWorld() {
+        World world = Bukkit.getWorld(config.getString("boss.random-spawn-location.world", "world"));
+        return world != null ? world : Bukkit.getWorld("world");
+    }
+
     public YamlConfiguration getYamlConfiguration() {
         return config;
     }

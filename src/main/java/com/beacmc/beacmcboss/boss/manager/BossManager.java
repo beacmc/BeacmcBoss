@@ -4,14 +4,21 @@ import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.boss.Boss;
 import com.beacmc.beacmcboss.boss.runnable.BossStartPeriodRunnable;
 import com.beacmc.beacmcboss.boss.runnable.TimerRunnable;
+import com.beacmc.beacmcboss.config.impl.BaseConfig;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -19,12 +26,14 @@ public class BossManager {
 
     private final BeacmcBoss plugin;
     private final Logger logger;
+    private final Random random;
     private Map<String, Boss> registerBosses;
 
     public BossManager() {
         plugin = BeacmcBoss.getInstance();
         logger = plugin.getLogger();
         registerBosses = new HashMap<>();
+        random = new Random();
         loadBosses();
     }
 
@@ -85,11 +94,40 @@ public class BossManager {
     }
 
     public @Nullable Boss getBossByEntity(LivingEntity entity) {
-        for (Boss boss : registerBosses.values()) {
-            if (boss.getLivingEntity() == entity)
-                return boss;
+        return registerBosses.values().stream()
+                .filter(boss -> boss.getLivingEntity() == entity)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Location createSpawnLocation(Boss boss) {
+        if (!boss.isRandomSpawnLocationEnabled()) {
+            return boss.getSpawnLocation();
         }
-        return null;
+        return searchSafeLocation(boss.getRandomSpawnLocationWorld(), boss.getRandomSpawnLocationRadius()).add(0, 1, 0);
+    }
+
+    public @NotNull Location searchSafeLocation(World world, Integer radius) {
+        for (int i = 0; i < 30; i++) {
+            int diameter = radius * 2;
+            int minX = -radius;
+            int minZ = -radius;
+
+            int x = minX + random.nextInt(diameter);
+            int z = minZ + random.nextInt(diameter);
+
+            Block block = world.getHighestBlockAt(x, z);
+            if (isSafeLocation(block.getType())) {
+                return block.getLocation();
+            }
+        }
+        return world.getHighestBlockAt(0, 0).getLocation();
+    }
+
+    private boolean isSafeLocation(Material material) {
+        return material != Material.WATER
+                && material != Material.LAVA
+                && !material.isAir();
     }
 
     public boolean exists(Boss boss) {

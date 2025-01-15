@@ -1,3 +1,6 @@
+# IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!
+# Wiki page: https://beacmc.gitbook.io/beacmcboss
+
 boss:
   display-name: "#ffbb00&lExample Boss"
   entity-type: ZOMBIE
@@ -16,6 +19,10 @@ boss:
     z: 0.0
     yaw: 0.0
     pitch: 0.0
+  random-spawn-location:
+    enable: true
+    world: world
+    radius: 1000
   health: 100.0
 triggers:
   timer-30-sec:
