@@ -5,7 +5,7 @@ import com.beacmc.beacmcboss.boss.Boss;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 
-public class BooleanRequirement extends Requirement {
+public class BooleanRequirement implements Requirement {
 
 
     @Override

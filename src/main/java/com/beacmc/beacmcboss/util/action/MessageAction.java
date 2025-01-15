@@ -8,7 +8,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 
 import org.bukkit.entity.Player;
 
-public class MessageAction extends Action {
+public class MessageAction implements Action {
 
 
     @Override

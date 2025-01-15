@@ -3,12 +3,11 @@ package com.beacmc.beacmcboss.api.requirement;
 import com.beacmc.beacmcboss.boss.Boss;
 import org.bukkit.entity.Player;
 
-public abstract class Requirement {
+public interface Requirement {
 
-    public abstract String getName();
+    String getName();
 
-    public abstract String getDescription();
+    String getDescription();
 
-    public abstract boolean execute(Player player, Boss boss, String param);
-
+    boolean execute(Player player, Boss boss, String param);
 }

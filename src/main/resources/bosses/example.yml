@@ -4,6 +4,7 @@
 boss:
   display-name: "#ffbb00&lExample Boss"
   entity-type: ZOMBIE
+  timer-start-enable: true
   time-start-period: 5 # in minutes
   damage: 20.0
   boss-bar:

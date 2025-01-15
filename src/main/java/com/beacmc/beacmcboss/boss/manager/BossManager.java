@@ -55,8 +55,12 @@ public class BossManager {
         } catch (IllegalArgumentException e) { }
     }
 
-    public void unregisterBoss(String name, Boss boss) {
-        if(isRegisterBoss(boss) || isRegisterBoss(name)) {
+    public void unregisterBoss(String name) {
+        Boss boss = getBossByName(name);
+        if (boss != null) {
+            if (boss.isSpawned()) {
+                boss.despawn(null);
+            }
             boss.getBossStartRunnable().cancel();
             boss.getNearbyRunnable().cancel();
             boss.getTimerRunnable().cancel();
@@ -66,19 +70,18 @@ public class BossManager {
         logger.severe("Boss " + name + " not registered");
     }
 
+    public void unregisterBoss(Boss boss) {
+        unregisterBoss(boss.getName());
+    }
+
     public void unregisterAll() {
-        registerBosses.values().forEach(boss -> {
-            if(boss.isSpawned()) {
-                boss.despawn(null);
-            }
-            boss.getTimerRunnable().cancel();
-            boss.getBossStartRunnable().cancel();
-        });
-        registerBosses.clear();
+        registerBosses.values().forEach(this::unregisterBoss);
     }
 
     public void loadBosses() {
-        ConfigurationSection section = plugin.getConfig().getConfigurationSection("bosses");
+        final BaseConfig config = BeacmcBoss.getBaseConfig();
+        final ConfigurationSection section = config.getBossesSection();
+
         section.getKeys(false).forEach(key -> {
             File file = new File(plugin.getDataFolder(), "bosses/" + section.getString(key));
             if(file.exists() && file.getName().endsWith(".yml")) {
@@ -87,7 +90,6 @@ public class BossManager {
             }
         });
     }
-
 
     public @Nullable Boss getBossByName(String name) {
         return registerBosses.get(name);

@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.util.logging.Logger;
 
-public class SoundAction extends Action {
+public class SoundAction implements Action {
 
     private final Logger logger;
 

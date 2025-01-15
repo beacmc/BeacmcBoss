@@ -33,7 +33,6 @@ public class ItemManager {
                 items.put(item, section.getItemStack(item));
             }
         });
-        System.out.println(items);
     }
 
     public boolean exists(ItemStack stack) {

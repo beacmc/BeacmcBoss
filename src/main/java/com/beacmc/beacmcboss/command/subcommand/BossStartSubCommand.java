@@ -4,11 +4,11 @@ import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.boss.Boss;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
 import com.beacmc.beacmcboss.api.subcommand.SubCommand;
-import com.beacmc.beacmcboss.config.LanguageConfig;
+import com.beacmc.beacmcboss.config.impl.LanguageConfig;
 import com.beacmc.beacmcboss.util.Message;
 import org.bukkit.command.CommandSender;
 
-public class BossStartSubCommand extends SubCommand {
+public class BossStartSubCommand implements SubCommand {
 
     private final BossManager bossManager;
 
@@ -44,6 +44,6 @@ public class BossStartSubCommand extends SubCommand {
         }
 
         sender.sendMessage(Message.of(lang.getBossSpawnedMessage()));
-        boss.spawn();
+        boss.spawn(bossManager.createSpawnLocation(boss));
     }
 }

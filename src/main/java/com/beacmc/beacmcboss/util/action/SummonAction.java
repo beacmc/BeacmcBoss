@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SummonAction extends Action {
+public class SummonAction implements Action {
 
     private final Pattern ENTITY_PATTERN = Pattern.compile("\\[entity=([A-Z_]+)\\]");
     private final Pattern LOCATION_PATTERN = Pattern.compile("\\[location=([^;]+);([-+]?[0-9]*\\.?[0-9]+);([-+]?[0-9]*\\.?[0-9]+);([-+]?[0-9]*\\.?[0-9]+)\\]");

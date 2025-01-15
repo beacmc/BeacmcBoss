@@ -10,20 +10,15 @@ import com.beacmc.beacmcboss.boss.manager.BossManager;
 import com.beacmc.beacmcboss.boss.runnable.BossBarRunnable;
 import com.beacmc.beacmcboss.boss.runnable.BossStartPeriodRunnable;
 import com.beacmc.beacmcboss.boss.runnable.NearbyRunnable;
-import com.beacmc.beacmcboss.config.BaseConfig;
 import com.beacmc.beacmcboss.util.Color;
-import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Zombie;
-import org.bukkit.inventory.EntityEquipment;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
@@ -42,12 +37,10 @@ public class Boss extends BossConfig {
     private LivingEntity entity;
     private final TriggerManager triggerManager;
     private final Logger logger;
-    private final BaseConfig config;
 
     public Boss(File file) {
         super(file);
         plugin = BeacmcBoss.getInstance();
-        config = BeacmcBoss.getBaseConfig();
         triggerManager = BeacmcBoss.getTriggerManager();
         logger = plugin.getLogger();
     }
@@ -56,11 +49,10 @@ public class Boss extends BossConfig {
         return entity != null;
     }
 
-    public void spawn() {
+    public void spawn(Location location) {
         if (isSpawned())
             return;
 
-        Location location = getSpawnLocation();
         World world = location.getWorld();
         Chunk chunk = location.getChunk();
 
@@ -78,9 +70,10 @@ public class Boss extends BossConfig {
             entity.setCustomName(Color.of(getDisplayName()));
             entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(getHealth());
             entity.setHealth(getHealth());
-            if (this.isBarEnable()) {
+            if (this.isBarEnabled()) {
                 setBossBarRunnable(new BossBarRunnable(this));
             }
+
             setNearbyRunnable(new NearbyRunnable(this));
             triggerManager.executeTriggers(null, this, TriggerType.BOSS_SPAWN);
         } catch (ClassCastException e) {
@@ -179,5 +172,10 @@ public class Boss extends BossConfig {
 
     public void setNearbyRunnable(BukkitRunnable nearbyRunnable) {
         this.nearbyRunnable = nearbyRunnable;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

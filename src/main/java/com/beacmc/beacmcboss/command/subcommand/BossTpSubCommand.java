@@ -4,12 +4,12 @@ import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.boss.Boss;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
 import com.beacmc.beacmcboss.api.subcommand.SubCommand;
-import com.beacmc.beacmcboss.config.LanguageConfig;
+import com.beacmc.beacmcboss.config.impl.LanguageConfig;
 import com.beacmc.beacmcboss.util.Message;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class BossTpSubCommand extends SubCommand {
+public class BossTpSubCommand implements SubCommand {
 
     private final BossManager bossManager;
 

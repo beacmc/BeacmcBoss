@@ -6,10 +6,9 @@ import com.beacmc.beacmcboss.api.requirement.RequirementManager;
 import com.beacmc.beacmcboss.api.trigger.TriggerManager;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
 import com.beacmc.beacmcboss.command.BossCommand;
-import com.beacmc.beacmcboss.config.BaseConfig;
-import com.beacmc.beacmcboss.config.LanguageConfig;
-import com.beacmc.beacmcboss.config.impl.BaseConfigImpl;
-import com.beacmc.beacmcboss.config.impl.LanguageConfigImpl;
+import com.beacmc.beacmcboss.config.ConfigManager;
+import com.beacmc.beacmcboss.config.impl.BaseConfig;
+import com.beacmc.beacmcboss.config.impl.LanguageConfig;
 import com.beacmc.beacmcboss.hook.papi.Expansion;
 import com.beacmc.beacmcboss.listener.BossListener;
 import com.beacmc.beacmcboss.util.Color;
@@ -20,7 +19,6 @@ import com.beacmc.beacmcboss.util.requirement.ConditionRequirement;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 
@@ -46,10 +44,14 @@ public final class BeacmcBoss extends JavaPlugin {
         instance = this;
         createConfigs();
         dataConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "data.yml"));
-        baseConfig = new BaseConfigImpl();
+        baseConfig = new BaseConfig();
         itemsConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "items.yml"));
+        languageConfig = new LanguageConfig();
+        ConfigManager baseConfigManager = new ConfigManager(getConfig());
+        baseConfigManager.loadConfig(baseConfig);
         localeConfig = YamlConfiguration.loadConfiguration(baseConfig.getLocaleFile());
-        languageConfig = new LanguageConfigImpl();
+        ConfigManager localeConfigManager = new ConfigManager(localeConfig);
+        localeConfigManager.loadConfig(languageConfig);
 
         actionManager = new ActionManager();
         requirementManager = new RequirementManager();
@@ -152,9 +154,13 @@ public final class BeacmcBoss extends JavaPlugin {
     public void reload() {
         this.createConfigs();
         this.reloadConfig();
-        baseConfig = new BaseConfigImpl();
+        baseConfig = new BaseConfig();
         localeConfig = YamlConfiguration.loadConfiguration(baseConfig.getLocaleFile());
-        languageConfig = new LanguageConfigImpl();
+        languageConfig = new LanguageConfig();
+        ConfigManager localeConfigManager = new ConfigManager(localeConfig);
+        ConfigManager baseConfigManager = new ConfigManager(getConfig());
+        baseConfigManager.loadConfig(baseConfig);
+        localeConfigManager.loadConfig(languageConfig);
         addonManager.unloadAddons();
         addonManager.loadAddons();
         bossManager.unregisterAll();

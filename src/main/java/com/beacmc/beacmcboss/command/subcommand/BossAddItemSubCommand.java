@@ -2,7 +2,7 @@ package com.beacmc.beacmcboss.command.subcommand;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.subcommand.SubCommand;
-import com.beacmc.beacmcboss.config.LanguageConfig;
+import com.beacmc.beacmcboss.config.impl.LanguageConfig;
 import com.beacmc.beacmcboss.util.Message;
 import com.beacmc.beacmcboss.util.item.ItemManager;
 import org.bukkit.Material;
@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-public class BossAddItemSubCommand extends SubCommand {
+public class BossAddItemSubCommand implements SubCommand {
 
     private final ItemManager manager;
 

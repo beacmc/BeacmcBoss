@@ -1,8 +1,9 @@
 package com.beacmc.beacmcboss.boss.config;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.configuration.ConfigurationSection;
@@ -78,20 +79,24 @@ public class BossConfig {
         return null;
     }
 
+    public boolean isTimerStartEnabled() {
+        return config.getBoolean("boss.timer-start-enable", true);
+    }
+
     public BarColor getBarColor() {
         try {
             return BarColor.valueOf(config.getString("boss.boss-bar.color"));
         } catch (IllegalArgumentException e) {
             logger.severe("Unknown bar color");
         }
-        return null;
+        return BarColor.PURPLE;
     }
 
     public String getBarTitle() {
         return config.getString("boss.boss-bar.text");
     }
 
-    public boolean isBarEnable() {
+    public boolean isBarEnabled() {
         return config.getBoolean("boss.boss-bar.enable", false);
     }
 

@@ -6,7 +6,7 @@ import com.beacmc.beacmcboss.util.Color;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 
-public class TitleAction extends Action {
+public class TitleAction implements Action {
 
     @Override
     public String getName() {

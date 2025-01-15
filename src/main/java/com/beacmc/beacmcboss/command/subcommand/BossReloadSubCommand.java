@@ -2,11 +2,11 @@ package com.beacmc.beacmcboss.command.subcommand;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.subcommand.SubCommand;
-import com.beacmc.beacmcboss.config.LanguageConfig;
+import com.beacmc.beacmcboss.config.impl.LanguageConfig;
 import com.beacmc.beacmcboss.util.Message;
 import org.bukkit.command.CommandSender;
 
-public class BossReloadSubCommand extends SubCommand {
+public class BossReloadSubCommand implements SubCommand {
 
     private final BeacmcBoss plugin;
 

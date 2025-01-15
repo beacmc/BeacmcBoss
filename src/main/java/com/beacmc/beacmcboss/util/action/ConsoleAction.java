@@ -6,7 +6,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class ConsoleAction extends Action {
+public class ConsoleAction implements Action {
 
 
     @Override

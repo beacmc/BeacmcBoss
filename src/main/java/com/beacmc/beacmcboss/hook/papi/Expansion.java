@@ -41,6 +41,7 @@ public class Expansion extends PlaceholderExpansion {
     }
 
     @Override
+    @SuppressWarnings("NullPointer")
     public @Nullable String onPlaceholderRequest(Player player, @NotNull String params) {
         String[] args = params.split(":");
         if(args.length != 2)
@@ -57,72 +58,20 @@ public class Expansion extends PlaceholderExpansion {
 
         try {
             switch (args[1].toLowerCase()) {
-                case "display-name" : {
-                    s = boss.getDisplayName();
-                    break;
-                }
-
-                case "default-name" : {
-                    s = boss.getName();
-                    break;
-                }
-
-                case "time-to-start" : {
-                    s = String.valueOf(boss.getTimeToStart());
-                    break;
-                }
-
-                case "lifetime" : {
-                    s = String.valueOf(boss.getLifetime());
-                    break;
-                }
-
-                case "health" : {
-                    s = String.valueOf((int) entity.getHealth());
-                    break;
-                }
-
-                case "loc-x" : {
-                    s = String.valueOf(location.getBlockX());
-                    break;
-                }
-
-                case "loc-y" : {
-                    s = String.valueOf(location.getBlockY());
-                    break;
-                }
-
-                case "loc-z" : {
-                    s = String.valueOf(location.getBlockZ());
-                    break;
-                }
-
-                case "loc-world" : {
-                    s = location.getWorld().getName();
-                    break;
-                }
-
-                case "loc" : {
-                    s = location.getWorld().getName() + ";" + location.getBlockX() + ";" + location.getBlockY() + ";" + location.getBlockZ();
-                    break;
-                }
-
-                case "is-spawned" : {
-                    s = String.valueOf(boss.isSpawned());
-                    break;
-                }
-
-                case "last-killer" : {
-                    s = boss.getLastKiller();
-                    break;
-                }
-
-                default : {
-                    s = null;
-                    break;
-                }
+                case "display-name" -> s = boss.getDisplayName();
+                case "default-name" -> s = boss.getName();
+                case "time-to-start" -> s = String.valueOf(boss.getTimeToStart());
+                case "lifetime" -> s = String.valueOf(boss.getLifetime());
+                case "health" -> s = String.valueOf((int) entity.getHealth());
+                case "loc-x" -> s = String.valueOf(location.getBlockX());
+                case "loc-y" -> s = String.valueOf(location.getBlockY());
+                case "loc-z" -> s = String.valueOf(location.getBlockZ());
+                case "loc-world" -> s = location.getWorld().getName();
+                case "loc" -> s = location.getWorld().getName() + ";" + location.getBlockX() + ";" + location.getBlockY() + ";" + location.getBlockZ();
+                case "is-spawned" -> s = String.valueOf(boss.isSpawned());
+                case "last-killer" -> s = boss.getLastKiller();
             }
-        } catch (NullPointerException e) { }
+        } catch (NullPointerException ignored) { }
         return s;
     }
 }

@@ -4,7 +4,7 @@ import com.beacmc.beacmcboss.api.action.Action;
 import com.beacmc.beacmcboss.boss.Boss;
 import org.bukkit.entity.Player;
 
-public class BossStopAction extends Action {
+public class BossStopAction implements Action {
 
     @Override
     public String getName() {

@@ -2,9 +2,9 @@ package com.beacmc.beacmcboss.api.subcommand;
 
 import org.bukkit.command.CommandSender;
 
-public abstract class SubCommand {
+public interface SubCommand {
 
-    public abstract String getName();
+    String getName();
 
-    public abstract void execute(CommandSender sender, String[] args);
+    void execute(CommandSender sender, String[] args);
 }

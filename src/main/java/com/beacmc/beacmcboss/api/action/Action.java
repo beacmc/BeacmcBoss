@@ -3,11 +3,11 @@ package com.beacmc.beacmcboss.api.action;
 import com.beacmc.beacmcboss.boss.Boss;
 import org.bukkit.entity.Player;
 
-public abstract class Action {
+public interface Action {
 
-    public abstract String getName();
+    String getName();
 
-    public abstract String getDescription();
+    String getDescription();
 
-    public abstract void execute(Player player, Boss boss, String param);
+    void execute(Player player, Boss boss, String param);
 }

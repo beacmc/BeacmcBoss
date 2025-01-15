@@ -1,10 +1,11 @@
 package com.beacmc.beacmcboss.util.action;
 
+import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.action.Action;
 import com.beacmc.beacmcboss.boss.Boss;
 import org.bukkit.entity.Player;
 
-public class BossStartAction extends Action {
+public class BossStartAction implements Action {
 
     @Override
     public String getName() {
@@ -18,6 +19,6 @@ public class BossStartAction extends Action {
 
     @Override
     public void execute(Player player, Boss boss, String param) {
-        boss.spawn();
+        boss.spawn(BeacmcBoss.getBossManager().createSpawnLocation(boss));
     }
 }

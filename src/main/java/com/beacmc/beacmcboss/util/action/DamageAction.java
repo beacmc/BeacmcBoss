@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import java.util.logging.Logger;
 
-public class DamageAction extends Action {
+public class DamageAction implements Action {
 
     private final Logger logger;
 

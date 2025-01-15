@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 import java.util.logging.Logger;
 
-public class BroadcastSoundAction extends Action {
+public class BroadcastSoundAction implements Action {
 
     private final Logger logger;
 

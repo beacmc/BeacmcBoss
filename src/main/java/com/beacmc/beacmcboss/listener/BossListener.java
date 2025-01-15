@@ -39,6 +39,7 @@ public class BossListener implements Listener {
         final Player killer = entity.getKiller();
 
         if (bossManager.exists(boss)) {
+
             BossDeathEvent bossDeathEvent = new BossDeathEvent(boss, killer);
             BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(bossDeathEvent);
 
@@ -53,7 +54,7 @@ public class BossListener implements Listener {
                     data.load(file);
                     data.set("bosses." + boss.getName() + ".last-killer", killer.getName());
                     data.save(file);
-                } catch (IOException | InvalidConfigurationException e) { }
+                } catch (IOException | InvalidConfigurationException ignored) { }
             }
 
             event.getDrops().clear();
@@ -81,7 +82,6 @@ public class BossListener implements Listener {
     @EventHandler
     public void damageTriggers(EntityDamageByEntityEvent event) {
         final PluginManager manager = BeacmcBoss.getInstance().getServer().getPluginManager();
-
 
         if (event.getDamager() instanceof LivingEntity && event.getEntity() instanceof Player) {
             final Player player = (Player) event.getEntity();

@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ConditionRequirement extends Requirement {
+public class ConditionRequirement implements Requirement {
     @Override
     public String getName() {
         return "[condition]";
@@ -39,36 +39,14 @@ public class ConditionRequirement extends Requirement {
 
         try {
             switch (operator) {
-                case "==" : {
-                    condition = first.equals(second);
-                    break;
-                }
-                case "!=" : {
-                    condition = !first.equals(second);
-                    break;
-                }
-                case "<" : {
-                    condition = Integer.parseInt(first) < Integer.parseInt(second);
-                    break;
-                }
-                case ">" : {
-                    condition = Integer.parseInt(first) > Integer.parseInt(second);
-                    break;
-                }
-                case "<=" : {
-                    condition = Integer.parseInt(first) <= Integer.parseInt(second);
-                    break;
-                }
-                case ">=" : {
-                    condition = Integer.parseInt(first) >= Integer.parseInt(second);
-                    break;
-                }
-                default : {
-                    condition = false;
-                    break;
-                }
-            };
-        } catch (NumberFormatException e) { }
+                case "==" -> condition = first.equals(second);
+                case "!=" -> condition = !first.equals(second);
+                case "<" -> condition = Integer.parseInt(first) < Integer.parseInt(second);
+                case ">" -> condition = Integer.parseInt(first) > Integer.parseInt(second);
+                case "<=" -> condition = Integer.parseInt(first) <= Integer.parseInt(second);
+                case ">=" -> condition = Integer.parseInt(first) >= Integer.parseInt(second);
+            }
+        } catch (NumberFormatException ignored) { }
         return condition;
     }
 }

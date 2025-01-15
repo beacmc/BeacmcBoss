@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import java.util.logging.Logger;
 
-public class FireAction extends Action {
+public class FireAction implements Action {
 
     private final Logger logger;
 

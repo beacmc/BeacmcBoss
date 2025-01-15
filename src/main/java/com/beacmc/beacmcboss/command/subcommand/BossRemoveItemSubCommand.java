@@ -2,12 +2,12 @@ package com.beacmc.beacmcboss.command.subcommand;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.subcommand.SubCommand;
-import com.beacmc.beacmcboss.config.LanguageConfig;
+import com.beacmc.beacmcboss.config.impl.LanguageConfig;
 import com.beacmc.beacmcboss.util.Message;
 import com.beacmc.beacmcboss.util.item.ItemManager;
 import org.bukkit.command.CommandSender;
 
-public class BossRemoveItemSubCommand extends SubCommand {
+public class BossRemoveItemSubCommand implements SubCommand {
 
     private final ItemManager manager;
 

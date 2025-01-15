@@ -1,7 +1,7 @@
 package com.beacmc.beacmcboss.util;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
-import com.beacmc.beacmcboss.config.BaseConfig;
+import com.beacmc.beacmcboss.config.impl.BaseConfig;
 
 public class Message {
 

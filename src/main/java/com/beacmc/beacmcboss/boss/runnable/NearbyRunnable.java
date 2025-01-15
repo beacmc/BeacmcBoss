@@ -4,7 +4,7 @@ import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.trigger.TriggerManager;
 import com.beacmc.beacmcboss.api.trigger.TriggerType;
 import com.beacmc.beacmcboss.boss.Boss;
-import com.beacmc.beacmcboss.config.BaseConfig;
+import com.beacmc.beacmcboss.config.impl.BaseConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;

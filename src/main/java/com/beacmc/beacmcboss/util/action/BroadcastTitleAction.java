@@ -7,7 +7,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class BroadcastTitleAction extends Action {
+public class BroadcastTitleAction implements Action {
 
     @Override
     public String getName() {

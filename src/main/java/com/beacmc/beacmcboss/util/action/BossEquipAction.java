@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BossEquipAction extends Action {
+public class BossEquipAction implements Action {
 
     private final Pattern TYPE_PATTERN = Pattern.compile("\\[type=(\\w+)]");
     private final Pattern ITEM_PATTERN = Pattern.compile("\\[item=(\\w+)]");

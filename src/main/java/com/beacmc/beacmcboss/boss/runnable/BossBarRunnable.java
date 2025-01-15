@@ -2,11 +2,10 @@ package com.beacmc.beacmcboss.boss.runnable;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.boss.Boss;
-import com.beacmc.beacmcboss.config.BaseConfig;
+import com.beacmc.beacmcboss.config.impl.BaseConfig;
 import com.beacmc.beacmcboss.util.Color;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -42,7 +41,6 @@ public class BossBarRunnable extends BukkitRunnable {
             return;
         }
 
-
         final LivingEntity entity = boss.getLivingEntity();
         final String title = Color.of(PlaceholderAPI.setPlaceholders(null, boss.getBarTitle()));
 
@@ -73,10 +71,7 @@ public class BossBarRunnable extends BukkitRunnable {
     }
 
     public boolean isPlayerInBossBar(Player player) {
-        return players.stream()
-                .filter(p -> p == player)
-                .findFirst()
-                .orElse(null) != null;
+        return players.stream().anyMatch(player::equals);
     }
 
     public BossBar getBossBar() {

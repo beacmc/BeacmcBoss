@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ParticleAction extends Action {
+public class ParticleAction implements Action {
 
 
     private final Pattern PARTICLE_PATTERN = Pattern.compile("\\[settings=([^;]+);([0-9]+);([-+]?[0-9]*\\.?[0-9]+);([-+]?[0-9]*\\.?[0-9]+);([-+]?[0-9]*\\.?[0-9]+);([-+]?[0-9]*\\.?[0-9]+)\\]");

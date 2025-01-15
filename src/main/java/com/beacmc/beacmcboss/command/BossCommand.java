@@ -2,17 +2,12 @@ package com.beacmc.beacmcboss.command;
 
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.api.subcommand.SubCommandManager;
-import com.beacmc.beacmcboss.boss.Boss;
-import com.beacmc.beacmcboss.boss.config.BossConfig;
-import com.beacmc.beacmcboss.boss.manager.BossManager;
 import com.beacmc.beacmcboss.command.subcommand.*;
-import com.beacmc.beacmcboss.config.LanguageConfig;
+import com.beacmc.beacmcboss.config.impl.LanguageConfig;
 import com.beacmc.beacmcboss.util.Message;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.checkerframework.common.reflection.qual.GetConstructor;
 import org.jetbrains.annotations.NotNull;
 
 
