@@ -62,11 +62,15 @@ public class Boss extends BossConfig {
 
         Location location = getSpawnLocation();
         World world = location.getWorld();
+        Chunk chunk = location.getChunk();
+
         try {
             BossSpawnEvent event = new BossSpawnEvent(this);
             BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(event);
             if(event.isCancelled())
                 return;
+
+            chunk.addPluginChunkTicket(plugin);
 
             entity = (LivingEntity) world.spawnEntity(location, getEntityType());
             entity.setCustomNameVisible(true);
