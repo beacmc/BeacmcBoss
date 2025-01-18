@@ -10,6 +10,7 @@ import com.beacmc.beacmcboss.config.ConfigManager;
 import com.beacmc.beacmcboss.config.impl.BaseConfig;
 import com.beacmc.beacmcboss.config.impl.LanguageConfig;
 import com.beacmc.beacmcboss.hook.papi.Expansion;
+import com.beacmc.beacmcboss.lib.LibraryLoader;
 import com.beacmc.beacmcboss.listener.BossListener;
 import com.beacmc.beacmcboss.util.Color;
 import com.beacmc.beacmcboss.util.action.*;
@@ -37,11 +38,13 @@ public final class BeacmcBoss extends JavaPlugin {
     private static YamlConfiguration localeConfig;
     private static YamlConfiguration itemsConfig;
     private static ItemManager itemManager;
+    private static LibraryLoader libraryLoader;
 
     @Override
     public void onEnable() {
         long time = System.currentTimeMillis();
         instance = this;
+        libraryLoader = new LibraryLoader();
         createConfigs();
         dataConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "data.yml"));
         baseConfig = new BaseConfig();
@@ -124,6 +127,9 @@ public final class BeacmcBoss extends JavaPlugin {
         return instance;
     }
 
+    public static LibraryLoader getLibraryLoader() {
+        return libraryLoader;
+    }
 
     public static YamlConfiguration getLocaleConfig() {
         return localeConfig;
