@@ -8,8 +8,7 @@ import com.beacmc.beacmcboss.api.trigger.TriggerManager;
 import com.beacmc.beacmcboss.api.trigger.TriggerType;
 import com.beacmc.beacmcboss.boss.Boss;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.YamlConfiguration;
+import com.beacmc.beacmcboss.data.DataManager;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,23 +17,21 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.plugin.PluginManager;
 
-import java.io.File;
-import java.io.IOException;
-
 public class BossListener implements Listener {
 
     private final BossManager bossManager;
     private final TriggerManager triggerManager;
+    private final DataManager dataManager;
 
     public BossListener() {
         bossManager = BeacmcBoss.getBossManager();
+        dataManager = BeacmcBoss.getDataManager();
         triggerManager = BeacmcBoss.getTriggerManager();
     }
 
     @EventHandler
     public void onBossDeath(EntityDeathEvent event) {
         final LivingEntity entity = event.getEntity();
-        final YamlConfiguration data = BeacmcBoss.getDataConfig();
         final Boss boss = bossManager.getBossByEntity(entity);
         final Player killer = entity.getKiller();
 
@@ -49,12 +46,8 @@ public class BossListener implements Listener {
             }
 
             if (killer != null) {
-                try {
-                    File file = new File(BeacmcBoss.getInstance().getDataFolder(), "data.yml");
-                    data.load(file);
-                    data.set("bosses." + boss.getName() + ".last-killer", killer.getName());
-                    data.save(file);
-                } catch (IOException | InvalidConfigurationException ignored) { }
+                dataManager.setLastKiller(boss.getName(), killer.getName());
+                dataManager.addBossKill(killer.getUniqueId());
             }
 
             event.getDrops().clear();

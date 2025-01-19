@@ -3,6 +3,7 @@ package com.beacmc.beacmcboss.hook.papi;
 import com.beacmc.beacmcboss.BeacmcBoss;
 import com.beacmc.beacmcboss.boss.Boss;
 import com.beacmc.beacmcboss.boss.manager.BossManager;
+import com.beacmc.beacmcboss.data.DataManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
@@ -14,10 +15,12 @@ public class Expansion extends PlaceholderExpansion {
 
     private final BeacmcBoss plugin;
     private final BossManager manager;
+    private final DataManager dataManager;
 
     public Expansion() {
         this.plugin = BeacmcBoss.getInstance();
         this.manager = BeacmcBoss.getBossManager();
+        this.dataManager = BeacmcBoss.getDataManager();
     }
 
     @Override
@@ -44,8 +47,14 @@ public class Expansion extends PlaceholderExpansion {
     @SuppressWarnings("NullPointer")
     public @Nullable String onPlaceholderRequest(Player player, @NotNull String params) {
         String[] args = params.split(":");
-        if(args.length != 2)
-            return null;
+        if (args.length < 2) {
+            String result = null;
+            switch (params) {
+                case "boss-kills" -> result = String.valueOf(dataManager.getBossKills(player.getUniqueId()));
+                case "total-damage" -> result = String.valueOf(dataManager.getTotalDamage(player.getUniqueId()));
+            }
+            return result;
+        }
 
         Boss boss = manager.getBossByName(args[0]);
         if(boss == null)
@@ -54,7 +63,7 @@ public class Expansion extends PlaceholderExpansion {
         final LivingEntity entity = boss.getLivingEntity();
         final Location location = entity == null ? null : entity.getLocation();
 
-        String s = null;
+        String s = "";
 
         try {
             switch (args[1].toLowerCase()) {

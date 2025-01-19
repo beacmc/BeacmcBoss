@@ -23,7 +23,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 public class Boss extends BossConfig {
@@ -37,12 +40,19 @@ public class Boss extends BossConfig {
     private LivingEntity entity;
     private final TriggerManager triggerManager;
     private final Logger logger;
+    private final DataManager dataManager;
+    private final Map<UUID, Long> playerDamages;
 
     public Boss(File file) {
         super(file);
         plugin = BeacmcBoss.getInstance();
+        playerDamages = new HashMap<>();
         triggerManager = BeacmcBoss.getTriggerManager();
         logger = plugin.getLogger();
+        dataManager = BeacmcBoss.getDataManager();
+
+        Bukkit.getScheduler().runTaskTimer(plugin, () ->
+                playerDamages.forEach(dataManager::addTotalDamage), 0L, 200L);
     }
 
     public boolean isSpawned() {
@@ -52,6 +62,8 @@ public class Boss extends BossConfig {
     public void spawn(Location location) {
         if (isSpawned())
             return;
+
+        dataManager.createBossStatistic(getName());
 
         World world = location.getWorld();
         Chunk chunk = location.getChunk();
@@ -82,32 +94,29 @@ public class Boss extends BossConfig {
     }
 
     public void despawn(Player killer) {
-        final YamlConfiguration data = BeacmcBoss.getDataConfig();
+        if (!isSpawned())
+            return;
 
-        if(isSpawned()) {
-            BossDeathEvent event = new BossDeathEvent(this, killer);
-            BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(event);
-            if(event.isCancelled())
-                return;
+        BossDeathEvent event = new BossDeathEvent(this, killer);
+        BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(event);
 
-            try {
-                if(killer != null) {
-                    File file = new File(BeacmcBoss.getInstance().getDataFolder(), "data.yml");
-                    data.load(file);
-                    data.set("bosses." + getName() + ".last-killer", killer.getName());
-                    data.save(file);
-                }
-            } catch (IOException | InvalidConfigurationException e) { }
+        if (event.isCancelled())
+            return;
 
-            getNearbyRunnable().cancel();
-            if (bossBarRunnable != null) {
-                bossBarRunnable.clear();
-                setBossBarRunnable(null);
-            }
-            triggerManager.executeTriggers(null, this, TriggerType.BOSS_DEATH);
-            entity.remove();
-            entity = null;
+        if (killer != null) {
+            dataManager.setLastKiller(getName(), killer.getName());
+            dataManager.addBossKill(killer.getUniqueId());
         }
+
+        getNearbyRunnable().cancel();
+        if (bossBarRunnable != null) {
+            bossBarRunnable.clear();
+            setBossBarRunnable(null);
+        }
+
+        triggerManager.executeTriggers(null, this, TriggerType.BOSS_DEATH);
+        entity.remove();
+        entity = null;
     }
 
     public int getTimeToStart() {
@@ -119,8 +128,7 @@ public class Boss extends BossConfig {
     }
 
     public String getLastKiller() {
-        final YamlConfiguration data = BeacmcBoss.getDataConfig();
-        return data.getString("bosses." + getName() + ".last-killer");
+        return dataManager.getLastKiller(getName());
     }
 
     public String getName() {
