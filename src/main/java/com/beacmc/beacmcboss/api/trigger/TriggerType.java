@@ -7,5 +7,6 @@ public enum TriggerType {
     TIMER,
     NEARBY_PLAYERS,
     DAMAGE_BY_BOSS,
-    DAMAGE_BY_PLAYER
+    DAMAGE_BY_PLAYER,
+    PLAYER_INTERACT_BOSS
 }
