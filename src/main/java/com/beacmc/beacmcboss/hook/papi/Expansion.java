@@ -44,7 +44,6 @@ public class Expansion extends PlaceholderExpansion {
     }
 
     @Override
-    @SuppressWarnings("NullPointer")
     public @Nullable String onPlaceholderRequest(Player player, @NotNull String params) {
         String[] args = params.split(":");
         if (args.length < 2) {

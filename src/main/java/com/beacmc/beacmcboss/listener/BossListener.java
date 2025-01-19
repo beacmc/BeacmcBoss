@@ -82,8 +82,13 @@ public class BossListener implements Listener {
             final Boss boss = bossManager.getBossByEntity(entity);
 
             if (bossManager.exists(boss)) {
-                DamagePlayerByBossEvent bossDeathEvent = new DamagePlayerByBossEvent(boss, player);
-                manager.callEvent(bossDeathEvent);
+                DamagePlayerByBossEvent damagePlayerByBossEvent = new DamagePlayerByBossEvent(boss, player);
+                manager.callEvent(damagePlayerByBossEvent);
+
+                if (damagePlayerByBossEvent.isCancelled()) {
+                    event.setCancelled(true);
+                    return;
+                }
 
                 triggerManager.executeTriggers(player, boss, TriggerType.DAMAGE_BY_BOSS);
             }
@@ -95,9 +100,15 @@ public class BossListener implements Listener {
             final Boss boss = bossManager.getBossByEntity(entity);
 
             if (bossManager.exists(boss)) {
-                DamageBossByPlayerEvent bossDeathEvent = new DamageBossByPlayerEvent(boss, player);
-                manager.callEvent(bossDeathEvent);
+                DamageBossByPlayerEvent damageBossByPlayerEvent = new DamageBossByPlayerEvent(boss, player);
+                manager.callEvent(damageBossByPlayerEvent);
 
+                if (damageBossByPlayerEvent.isCancelled()) {
+                    event.setCancelled(true);
+                    return;
+                }
+
+                boss.addDamageQueue(player.getUniqueId(), (long) event.getDamage());
                 triggerManager.executeTriggers(player, boss, TriggerType.DAMAGE_BY_PLAYER);
             }
         }

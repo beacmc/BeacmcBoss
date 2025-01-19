@@ -1,13 +1,27 @@
 package com.beacmc.beacmcboss.config.impl;
 
 import com.beacmc.beacmcboss.config.ConfigValue;
-import org.bukkit.boss.BarColor;
-import org.bukkit.boss.BarStyle;
+import com.beacmc.beacmcboss.data.DatabaseType;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.io.File;
 
 public class BaseConfig {
+
+    @ConfigValue(key = "database.type", defaultValue = "SQLITE", setDefaultValueOnNull = true)
+    private DatabaseType databaseType;
+
+    @ConfigValue(key = "database.host")
+    private String databaseHost;
+
+    @ConfigValue(key = "database.database")
+    private String databaseName;
+
+    @ConfigValue(key = "database.username")
+    private String databaseUsername;
+
+    @ConfigValue(key = "database.password")
+    private String databasePassword;
 
     @ConfigValue(key = "settings.nearby-radius")
     private int nearbyRadius;
@@ -18,7 +32,7 @@ public class BaseConfig {
     @ConfigValue(key = "settings.prefix")
     private String prefix;
 
-    @ConfigValue(key = "settings.locale-file")
+    @ConfigValue(key = "settings.locale-file", defaultValue = "en.yml", setDefaultValueOnNull = true)
     private File localeFile;
 
     @ConfigValue(key = "settings.nearby-execute-time")
@@ -26,6 +40,26 @@ public class BaseConfig {
 
     @ConfigValue(key = "bosses")
     private ConfigurationSection bossesSection;
+
+    public DatabaseType getDatabaseType() {
+        return databaseType;
+    }
+
+    public String getDatabaseHost() {
+        return databaseHost;
+    }
+
+    public String getDatabaseName() {
+        return databaseName;
+    }
+
+    public String getDatabasePassword() {
+        return databasePassword;
+    }
+
+    public String getDatabaseUsername() {
+        return databaseUsername;
+    }
 
     public ConfigurationSection getBossesSection() {
         return bossesSection;

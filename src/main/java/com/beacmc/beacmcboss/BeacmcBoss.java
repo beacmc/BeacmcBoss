@@ -9,9 +9,12 @@ import com.beacmc.beacmcboss.command.BossCommand;
 import com.beacmc.beacmcboss.config.ConfigManager;
 import com.beacmc.beacmcboss.config.impl.BaseConfig;
 import com.beacmc.beacmcboss.config.impl.LanguageConfig;
+import com.beacmc.beacmcboss.data.DataManager;
+import com.beacmc.beacmcboss.data.DatabaseConnector;
 import com.beacmc.beacmcboss.hook.papi.Expansion;
 import com.beacmc.beacmcboss.lib.LibraryLoader;
 import com.beacmc.beacmcboss.listener.BossListener;
+import com.beacmc.beacmcboss.listener.PlayerListener;
 import com.beacmc.beacmcboss.util.Color;
 import com.beacmc.beacmcboss.util.action.*;
 import com.beacmc.beacmcboss.util.item.ItemManager;
@@ -22,6 +25,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.concurrent.CompletableFuture;
 
 public final class BeacmcBoss extends JavaPlugin {
 
@@ -32,13 +36,14 @@ public final class BeacmcBoss extends JavaPlugin {
     private static BossManager bossManager;
     private static LanguageConfig languageConfig;
     private static BaseConfig baseConfig;
-    private static YamlConfiguration dataConfig;
     private static Expansion expansion;
     private static AddonManager addonManager;
     private static YamlConfiguration localeConfig;
     private static YamlConfiguration itemsConfig;
     private static ItemManager itemManager;
     private static LibraryLoader libraryLoader;
+    private static DatabaseConnector databaseConnector;
+    private static DataManager dataManager;
 
     @Override
     public void onEnable() {
@@ -46,15 +51,19 @@ public final class BeacmcBoss extends JavaPlugin {
         instance = this;
         libraryLoader = new LibraryLoader();
         createConfigs();
-        dataConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "data.yml"));
         baseConfig = new BaseConfig();
         itemsConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "items.yml"));
         languageConfig = new LanguageConfig();
-        ConfigManager baseConfigManager = new ConfigManager(getConfig());
+        ConfigManager baseConfigManager = new ConfigManager(new File(getDataFolder(), "config.yml"), getConfig());
         baseConfigManager.loadConfig(baseConfig);
         localeConfig = YamlConfiguration.loadConfiguration(baseConfig.getLocaleFile());
-        ConfigManager localeConfigManager = new ConfigManager(localeConfig);
+        ConfigManager localeConfigManager = new ConfigManager(baseConfig.getLocaleFile(), localeConfig);
         localeConfigManager.loadConfig(languageConfig);
+
+        databaseConnector = new DatabaseConnector();
+        databaseConnector.init();
+
+        dataManager = new DataManager(databaseConnector);
 
         actionManager = new ActionManager();
         requirementManager = new RequirementManager();
@@ -72,6 +81,7 @@ public final class BeacmcBoss extends JavaPlugin {
         expansion = new Expansion();
         expansion.register();
         this.getServer().getPluginManager().registerEvents(new BossListener(), this);
+        this.getServer().getPluginManager().registerEvents(new PlayerListener(), this);
         this.getCommand("boss").setExecutor(new BossCommand());
         long finalTime = System.currentTimeMillis() - time;
         this.send("&7");
@@ -107,6 +117,10 @@ public final class BeacmcBoss extends JavaPlugin {
         return triggerManager;
     }
 
+    public static DatabaseConnector getDatabaseConnector() {
+        return databaseConnector;
+    }
+
     public static ItemManager getItemManager() {
         return itemManager;
     }
@@ -127,16 +141,16 @@ public final class BeacmcBoss extends JavaPlugin {
         return instance;
     }
 
+    public static DataManager getDataManager() {
+        return dataManager;
+    }
+
     public static LibraryLoader getLibraryLoader() {
         return libraryLoader;
     }
 
     public static YamlConfiguration getLocaleConfig() {
         return localeConfig;
-    }
-
-    public static YamlConfiguration getDataConfig() {
-        return dataConfig;
     }
 
     public static YamlConfiguration getItemsConfig() {
@@ -149,23 +163,34 @@ public final class BeacmcBoss extends JavaPlugin {
         saveResource("items.yml", false);
         new File(this.getDataFolder().getAbsoluteFile() + "/lang").mkdirs();
         File file = new File(this.getDataFolder().getAbsoluteFile() + "/bosses");
-        if(file.mkdirs()) {
+        if (file.mkdirs()) {
             saveResource("bosses/example.yml", false);
         }
 
-        this.saveResource("lang/ru.yml", false);
-        this.saveResource("lang/en.yml", false);
+        CompletableFuture.supplyAsync(() -> {
+            this.saveResource("lang/ru.yml", false);
+            this.saveResource("lang/en.yml", false);
+            this.saveResource("lang/cs.yml", false);
+            this.saveResource("lang/de.yml", false);
+            this.saveResource("lang/es.yml", false);
+            this.saveResource("lang/fr.yml", false);
+            this.saveResource("lang/it.yml", false);
+            this.saveResource("lang/pl.yml", false);
+            this.saveResource("lang/pt.yml", false);
+            this.saveResource("lang/ua.yml", false);
+            return null;
+        });
     }
 
     public void reload() {
         this.createConfigs();
         this.reloadConfig();
         baseConfig = new BaseConfig();
-        localeConfig = YamlConfiguration.loadConfiguration(baseConfig.getLocaleFile());
         languageConfig = new LanguageConfig();
-        ConfigManager localeConfigManager = new ConfigManager(localeConfig);
-        ConfigManager baseConfigManager = new ConfigManager(getConfig());
+        ConfigManager baseConfigManager = new ConfigManager(new File(getDataFolder(), "config.yml"), getConfig());
         baseConfigManager.loadConfig(baseConfig);
+        localeConfig = YamlConfiguration.loadConfiguration(baseConfig.getLocaleFile());
+        ConfigManager localeConfigManager = new ConfigManager(baseConfig.getLocaleFile(), localeConfig);
         localeConfigManager.loadConfig(languageConfig);
         addonManager.unloadAddons();
         addonManager.loadAddons();

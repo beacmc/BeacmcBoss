@@ -1,3 +1,10 @@
+database:
+  type: SQLITE
+  host: localhost:3306
+  database: beacmcboss
+  username: beacmc
+  password: "DHHDFuoshdfuy8jmx8jy289"
+
 settings:
 
   # use in languages files

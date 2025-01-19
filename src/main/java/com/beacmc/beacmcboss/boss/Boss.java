@@ -10,7 +10,9 @@ import com.beacmc.beacmcboss.boss.manager.BossManager;
 import com.beacmc.beacmcboss.boss.runnable.BossBarRunnable;
 import com.beacmc.beacmcboss.boss.runnable.BossStartPeriodRunnable;
 import com.beacmc.beacmcboss.boss.runnable.NearbyRunnable;
+import com.beacmc.beacmcboss.data.DataManager;
 import com.beacmc.beacmcboss.util.Color;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -71,7 +73,7 @@ public class Boss extends BossConfig {
         try {
             BossSpawnEvent event = new BossSpawnEvent(this);
             BeacmcBoss.getInstance().getServer().getPluginManager().callEvent(event);
-            if(event.isCancelled())
+            if (event.isCancelled())
                 return;
 
             chunk.addPluginChunkTicket(plugin);
@@ -82,6 +84,7 @@ public class Boss extends BossConfig {
             entity.setCustomName(Color.of(getDisplayName()));
             entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(getHealth());
             entity.setHealth(getHealth());
+
             if (this.isBarEnabled()) {
                 setBossBarRunnable(new BossBarRunnable(this));
             }
@@ -180,6 +183,15 @@ public class Boss extends BossConfig {
 
     public void setNearbyRunnable(BukkitRunnable nearbyRunnable) {
         this.nearbyRunnable = nearbyRunnable;
+    }
+
+    public Map<UUID, Long> getPlayerDamages() {
+        return playerDamages;
+    }
+
+    public void addDamageQueue(UUID uuid, long damage) {
+        long currentDamage = playerDamages.getOrDefault(uuid, 0L);
+        playerDamages.put(uuid, currentDamage + damage);
     }
 
     @Override
