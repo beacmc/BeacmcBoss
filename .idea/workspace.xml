@@ -10,15 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="refactor code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/event/PlayerInteractBossEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/trigger/TriggerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/trigger/TriggerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/ConfigManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/model/BossStatistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/model/BossStatistic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/PlayerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/PlayerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/addon/AddonManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/addon/AddonManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/manager/BossManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/manager/BossManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +32,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="13bbd760-9fb8-43e6-9bb6-e520039f7314" />
+        <option name="url" value="https://github.com/beacmc/BeacmcBoss.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/com/destroystokyo/paper/paper-api/1.16.5-R0.1-SNAPSHOT/paper-api-1.16.5-R0.1-20211218.082619-371-sources.jar!/org/bukkit/event/Listener.java" root0="SKIP_INSPECTION" />
@@ -439,7 +446,7 @@
       <option name="project" value="LOCAL" />
       <updated>1729619202858</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -454,7 +461,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="creating unique boss bars for each boss separately" />
     <MESSAGE value="fix bug a despawn the boss and refactor code" />
     <MESSAGE value="add triggers DAMAGE_BY_BOSS and DAMAGE_BY_PLAYER" />
     <MESSAGE value="fix 1.21" />
@@ -478,6 +484,7 @@
     <MESSAGE value="add library manager" />
     <MESSAGE value="added multi langs" />
     <MESSAGE value="add database storage" />
+    <MESSAGE value="add new trigger and API event" />
     <MESSAGE value="refactor code" />
     <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
   </component>

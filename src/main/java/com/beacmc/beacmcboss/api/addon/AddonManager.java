@@ -76,7 +76,9 @@ public class AddonManager {
     }
 
     public void unloadAddons() {
-        this.getAddons().forEach(this::unloadAddon);
+        for (BossAddon addon : this.getAddons()) {
+            unloadAddon(addon);
+        }
     }
 
     public void unloadAddon(BossAddon addon) {
@@ -88,7 +90,6 @@ public class AddonManager {
             e.printStackTrace();
         }
     }
-
 
     public boolean isLoad(BossAddon addon) {
         return addons.containsValue(addon);

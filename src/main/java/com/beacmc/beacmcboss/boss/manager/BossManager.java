@@ -62,8 +62,9 @@ public class BossManager {
                 boss.despawn(null);
             }
             boss.getBossStartRunnable().cancel();
-            boss.getNearbyRunnable().cancel();
             boss.getTimerRunnable().cancel();
+            if (boss.getNearbyRunnable() != null)
+                boss.getNearbyRunnable().cancel();
             registerBosses.remove(name, boss);
             return;
         }
@@ -75,7 +76,9 @@ public class BossManager {
     }
 
     public void unregisterAll() {
-        registerBosses.values().forEach(this::unregisterBoss);
+        for (Boss boss : registerBosses.values()) {
+            unregisterBoss(boss);
+        }
     }
 
     public void loadBosses() {
