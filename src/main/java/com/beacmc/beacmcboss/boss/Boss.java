@@ -111,7 +111,9 @@ public class Boss extends BossConfig {
             dataManager.addBossKill(killer.getUniqueId());
         }
 
-        getNearbyRunnable().cancel();
+        if (getNearbyRunnable() != null)
+            getNearbyRunnable().cancel();
+
         if (bossBarRunnable != null) {
             bossBarRunnable.clear();
             setBossBarRunnable(null);

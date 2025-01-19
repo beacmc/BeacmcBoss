@@ -11,16 +11,16 @@ public class BaseConfig {
     @ConfigValue(key = "database.type", defaultValue = "SQLITE", setDefaultValueOnNull = true)
     private DatabaseType databaseType;
 
-    @ConfigValue(key = "database.host")
+    @ConfigValue(key = "database.host",  defaultValue = "localhost:3306", setDefaultValueOnNull = true)
     private String databaseHost;
 
-    @ConfigValue(key = "database.database")
+    @ConfigValue(key = "database.database",  defaultValue = "beacmcboss", setDefaultValueOnNull = true)
     private String databaseName;
 
-    @ConfigValue(key = "database.username")
+    @ConfigValue(key = "database.username",  defaultValue = "beacmc", setDefaultValueOnNull = true)
     private String databaseUsername;
 
-    @ConfigValue(key = "database.password")
+    @ConfigValue(key = "database.password",  defaultValue = "1hduhd7hysHs7d9A", setDefaultValueOnNull = true)
     private String databasePassword;
 
     @ConfigValue(key = "settings.nearby-radius")

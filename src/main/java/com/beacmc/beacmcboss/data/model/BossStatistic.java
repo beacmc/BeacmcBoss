@@ -9,7 +9,7 @@ public class BossStatistic {
     @DatabaseField(id = true, columnName = "id", canBeNull = false)
     private String id;
 
-    @DatabaseField(columnName = "last-killer", defaultValue = "0")
+    @DatabaseField(columnName = "last_killer", defaultValue = "0")
     private String lastKiller;
 
     public BossStatistic() {}

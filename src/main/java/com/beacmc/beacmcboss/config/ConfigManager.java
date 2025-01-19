@@ -21,7 +21,7 @@ public class ConfigManager {
     }
 
     public void loadConfig(Object object) {
-        Class clazz = object.getClass();
+        Class<?> clazz = object.getClass();
         for (Field field : clazz.getDeclaredFields()) {
             if (!field.isAnnotationPresent(ConfigValue.class))
                 continue;
@@ -33,46 +33,24 @@ public class ConfigManager {
             try {
                 Object value = config.get(key);
 
-                if (value == null) {
-                    if (!annotation.defaultValue().isEmpty()) {
-                        field.set(object, annotation.defaultValue());
-                    }
-
+                if (value == null || !config.isSet(key)) {
                     if (annotation.setDefaultValueOnNull()) {
                         config.set(key, annotation.defaultValue());
                     }
                     continue;
                 }
 
-                if (field.getType() == String.class) {
-                    field.set(object, value != null ? value.toString() : null);
-                }
-
-                else if (field.getType() == int.class) {
-                    field.set(object, value != null ? value : 0);
-                }
-
-                else if (field.getType() == boolean.class) {
-                    field.set(object, value != null ? value : false);
-                }
-
-                else if (field.getType() == double.class) {
-                    field.set(object, value != null ? value : 0.0);
-                }
-
-                else if (field.getType() == File.class) {
+                if (field.getType() == File.class) {
                     File path = new File(BeacmcBoss.getInstance().getDataFolder(), "lang");
-                    field.set(object, new File(value != null ? path.getAbsolutePath() + File.separator + value : ""));
-                }
-
-                else if (field.getType() == ConfigurationSection.class) {
+                    field.set(object, new File( path.getAbsolutePath() + File.separator + value));
+                } else if (field.getType() == ConfigurationSection.class) {
                     field.set(object, config.getConfigurationSection(key));
-                }
-
-                else if (field.getType().isEnum()) {
+                } else if (field.getType().isEnum()) {
                     Class<Enum> enumType = (Class<Enum>) field.getType();
                     Enum<?> enumValue = Enum.valueOf(enumType, value.toString().toUpperCase());
                     field.set(object, enumValue);
+                } else {
+                    field.set(object, value);
                 }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();

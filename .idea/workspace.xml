@@ -9,35 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="add library manager">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/DataManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/DatabaseConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/DatabaseType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/dao/DefaultDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/dao/impl/BossStatisticDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/dao/impl/PlayerStatisticDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/model/BossStatistic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/model/PlayerStatistic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/PlayerListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/cs.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/de.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/es.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/fr.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/it.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/pl.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/pt.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/ua.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+    <list default="true" id="407fbdf9-8353-4851-a2be-725be3e16044" name="Changes" comment="refactor code">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/event/PlayerInteractBossEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/BeacmcBoss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/trigger/TriggerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/api/trigger/TriggerType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/boss/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/ConfigManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/ConfigValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/ConfigValue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/config/impl/BaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/hook/papi/Expansion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/BossListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/model/BossStatistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/data/model/BossStatistic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/PlayerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beacmc/beacmcboss/listener/PlayerListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -458,7 +439,7 @@
       <option name="project" value="LOCAL" />
       <updated>1729619202858</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -473,8 +454,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bump to 1.4" />
-    <MESSAGE value="added 1.21 support" />
     <MESSAGE value="creating unique boss bars for each boss separately" />
     <MESSAGE value="fix bug a despawn the boss and refactor code" />
     <MESSAGE value="add triggers DAMAGE_BY_BOSS and DAMAGE_BY_PLAYER" />
@@ -496,9 +475,11 @@
     <MESSAGE value="The configuration system has been changed" />
     <MESSAGE value="Added boss spawn system on random coordinates" />
     <MESSAGE value="fixed bug with mismatched entity on unloaded chunk" />
-    <MESSAGE value="refactor code" />
     <MESSAGE value="add library manager" />
-    <option name="LAST_COMMIT_MESSAGE" value="add library manager" />
+    <MESSAGE value="added multi langs" />
+    <MESSAGE value="add database storage" />
+    <MESSAGE value="refactor code" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
