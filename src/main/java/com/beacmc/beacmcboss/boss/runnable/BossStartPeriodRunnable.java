@@ -30,7 +30,7 @@ public class BossStartPeriodRunnable extends BukkitRunnable {
             seconds -= 1;
             if (seconds <= 0) {
                 seconds = boss.getSpawnTimePeriod() * 60;
-                boss.spawn(BeacmcBoss.getBossManager().createSpawnLocation(boss));
+                BeacmcBoss.getBossManager().createSpawnLocation(boss).thenAccept(boss::spawn);
             }
         } else {
             lifetime += 1;

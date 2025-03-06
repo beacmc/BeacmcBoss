@@ -19,6 +19,6 @@ public class BossStartAction implements Action {
 
     @Override
     public void execute(Player player, Boss boss, String param) {
-        boss.spawn(BeacmcBoss.getBossManager().createSpawnLocation(boss));
+        BeacmcBoss.getBossManager().createSpawnLocation(boss).thenAccept(boss::spawn);
     }
 }

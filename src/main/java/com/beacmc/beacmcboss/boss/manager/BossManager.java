@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Logger;
 
 public class BossManager {
@@ -105,28 +106,30 @@ public class BossManager {
                 .orElse(null);
     }
 
-    public Location createSpawnLocation(Boss boss) {
+    public CompletableFuture<Location> createSpawnLocation(Boss boss) {
         if (!boss.isRandomSpawnLocationEnabled()) {
-            return boss.getSpawnLocation();
+            return CompletableFuture.completedFuture(boss.getSpawnLocation());
         }
-        return searchSafeLocation(boss.getRandomSpawnLocationWorld(), boss.getRandomSpawnLocationRadius()).add(0, 1, 0);
+        return searchSafeLocation(boss.getRandomSpawnLocationWorld(), boss.getRandomSpawnLocationRadius());
     }
 
-    public @NotNull Location searchSafeLocation(World world, Integer radius) {
-        for (int i = 0; i < 30; i++) {
-            int diameter = radius * 2;
-            int minX = -radius;
-            int minZ = -radius;
+    public @NotNull CompletableFuture<Location> searchSafeLocation(World world, Integer radius) {
+        return CompletableFuture.supplyAsync(() -> {
+            for (int i = 0; i < 30; i++) {
+                int diameter = radius * 2;
+                int minX = -radius;
+                int minZ = -radius;
 
-            int x = minX + random.nextInt(diameter);
-            int z = minZ + random.nextInt(diameter);
+                int x = minX + random.nextInt(diameter);
+                int z = minZ + random.nextInt(diameter);
 
-            Block block = world.getHighestBlockAt(x, z);
-            if (isSafeLocation(block.getType())) {
-                return block.getLocation();
+                Block block = world.getHighestBlockAt(x, z);
+                if (isSafeLocation(block.getType())) {
+                    return block.getLocation();
+                }
             }
-        }
-        return world.getHighestBlockAt(0, 0).getLocation();
+            return world.getHighestBlockAt(0, 0).getLocation().add(0, 1, 0);
+        });
     }
 
     private boolean isSafeLocation(Material material) {

@@ -44,6 +44,6 @@ public class BossStartSubCommand implements SubCommand {
         }
 
         sender.sendMessage(Message.of(lang.getBossSpawnedMessage()));
-        boss.spawn(bossManager.createSpawnLocation(boss));
+        BeacmcBoss.getBossManager().createSpawnLocation(boss).thenAccept(boss::spawn);
     }
 }
